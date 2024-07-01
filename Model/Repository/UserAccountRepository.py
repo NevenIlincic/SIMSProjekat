@@ -1,5 +1,5 @@
 from Model.Models.KorisnickiNalog import KorisnickiNalog
-
+from Model.Models.Enumerations import VrstaKorisnika
 
 class UserAccountRepository():
     def __init__(self) -> None:
@@ -32,6 +32,7 @@ class UserAccountRepository():
                 f.write(row)
 
     def generate_id(self):
+        self.accounts.sort(key=lambda x: x.id)
         last_account = self.accounts[-1]
         return last_account.id + 1
 

@@ -1,2 +1,2 @@
-1,MeXa,sifra,Muzicki Urednik
-2,Lule,nesto,Administrator
+1,MeXa,sifra,Muzicki urednik
+3,DJomla,sifrica,Registrovani korisnik

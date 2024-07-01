@@ -3,7 +3,7 @@ from enum import Enum
 # Enums
 class VrstaKorisnika(Enum):
     Urednik = "Muzicki urednik"
-    Administrator = "Adminitrator"
+    Administrator = "Administrator"
     Registrovani_korisnik = "Registrovani korisnik"
     
 class Zanr(Enum):
