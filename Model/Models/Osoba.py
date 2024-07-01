@@ -1,4 +1,4 @@
-from Enumerations import Pol
+from Model.Models.Enumerations import Pol
 
 class Osoba:
     def __init__(self, ime: str, prezime: str, pol: Pol):

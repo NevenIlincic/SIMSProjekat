@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication
 from View.StartingMenuView import MainWindow  # Uvoz klase MainWindow iz StartingMenuView modula
-from View.RegisteredUserView import RegisteredUserWindow
+from View.MusicSupervisorView import MusicSupervisorWindow
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

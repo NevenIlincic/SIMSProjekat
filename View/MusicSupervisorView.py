@@ -2,7 +2,7 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow, QMessageBox
 
 
-class RegisteredUserWindow(QMainWindow):
+class MusicSupervisorWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi('UI/RegisteredUser.ui', self)

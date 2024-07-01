@@ -1,4 +1,4 @@
-from Enumerations import Jezik
+from Model.Models.Enumerations import Jezik
 from abc import ABC, abstractmethod
 
 class NeregistrovaniKorisnik(ABC):
