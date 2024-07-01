@@ -1,4 +1,4 @@
-from Osoba import Osoba
+from Model.Models.Osoba import Osoba
 from SIMSProjekat.Model.Models.Enumerations import Pol
 
 class Administrator(Osoba):

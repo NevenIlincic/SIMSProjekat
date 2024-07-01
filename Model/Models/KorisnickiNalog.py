@@ -1,7 +1,5 @@
-from Osoba import Osoba
-
 class KorisnickiNalog:
-    def __init__(self, korisnicko_ime: str, lozinka: str, osoba: Osoba):
+    def __init__(self, korisnicko_ime: str, lozinka: str):
         self.korisnicko_ime = korisnicko_ime
         self.lozinka = lozinka
-        self.osoba = osoba
+        

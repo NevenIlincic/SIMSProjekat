@@ -1,5 +1,5 @@
-from Enumerations import Pol, Jezik
-from NeregistrovaniKorisnik import NeregistrovaniKorisnik
+from Model.Models.Enumerations import Pol, Jezik
+from Model.Models.NeregistrovaniKorisnik import NeregistrovaniKorisnik
 
 class Posetilac(NeregistrovaniKorisnik):
     def registruj_se(self, ime: str, prezime: str, pol: Pol, lozinka: str, korisnicko_ime: str):

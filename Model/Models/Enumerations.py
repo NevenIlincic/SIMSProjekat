@@ -18,7 +18,7 @@ class Pol(Enum):
     Muski = "muski"
     Zenski = "zenski"
 
-class VrstaoIzvodjenja(Enum):
+class VrstaIzvodjenja(Enum):
     CD = "CD"
     Ploca = "Ploca"
     Kaseta = "Kaseta"

@@ -2,7 +2,7 @@ from Model.Models.Korisnik import Korisnik
 from Model.Models.Enumerations import Pol
 
 class MuzickiUrednik(Korisnik):
-    def __init__(self, id: int, korisnicko_ime: str, lozinka: str, ime: str, prezime: str, pol: Pol, blokiran: bool, zadaci: list, recenzije: list):
+    def __init__(self, id: int, ime: str, prezime: str, pol: Pol, blokiran: bool, zadaci: list, recenzije: list):
         super().__init__(ime, prezime, pol, blokiran)
         self.id = id
         self.zadaci = zadaci
