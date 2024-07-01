@@ -1,10 +1,11 @@
 from Model.Models.NeregistrovaniKorisnik import NeregistrovaniKorisnik
 from Model.Models.Enumerations import Pol
 from Model.Models.Osoba import Osoba
+from Model.Models.KorisnickiNalog import KorisnickiNalog
 
 class Korisnik(Osoba):
-    def __init__(self, ime: str, prezime: str, pol: Pol, blokiran: bool):
-        super().__init__(ime, prezime, pol)
+    def __init__(self, ime: str, prezime: str, pol: Pol, blokiran: bool, korisnicki_nalog: KorisnickiNalog):
+        super().__init__(ime, prezime, pol, korisnicki_nalog)
         self.blokiran = blokiran
 
     def prijavi_se(self, korisnicko_ime: str, lozinka: str):

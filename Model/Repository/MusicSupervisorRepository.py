@@ -22,7 +22,7 @@ class MusicSupervisorRepository(NeregistrovaniKorisnik):
 
 
     def assign_from_list(self, parameters):
-        supervisor = MuzickiUrednik(int(parameters[0]),"Mika", "Mikic", parameters[1], parameters[2], Pol(parameters[3]), 
+        supervisor = MuzickiUrednik(int(parameters[0]), parameters[1], parameters[2], Pol(parameters[3]), 
                               bool(parameters[4]), [parameters[5]], [parameters[6]])
         return supervisor
 

@@ -1,9 +1,10 @@
 from Model.Models.Korisnik import Korisnik
 from Model.Models.Enumerations import Pol
+from Model.Models.KorisnickiNalog import KorisnickiNalog
 
 class MuzickiUrednik(Korisnik):
-    def __init__(self, id: int, ime: str, prezime: str, pol: Pol, blokiran: bool, zadaci: list, recenzije: list):
-        super().__init__(ime, prezime, pol, blokiran)
+    def __init__(self, id: int, ime: str, prezime: str, pol: Pol, blokiran: bool, zadaci: list, recenzije: list, korisnicki_nalog: KorisnickiNalog ):
+        super().__init__(ime, prezime, pol, blokiran, korisnicki_nalog)
         self.id = id
         self.zadaci = zadaci
         self.recenzije = recenzije
