@@ -1,6 +1,11 @@
 from enum import Enum
 
 # Enums
+class VrstaKorisnika(Enum):
+    Urednik = "Muzicki urednik"
+    Administrator = "Adminitrator"
+    Registrovani_korisnik = "Registrovani korisnik"
+    
 class Zanr(Enum):
     Pop = "Pop"
     Narodna = "Narodna"
