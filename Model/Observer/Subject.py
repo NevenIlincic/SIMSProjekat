@@ -11,6 +11,6 @@ class Subject():
         if observer in self.observers:
             self.observers.remove(observer)
 
-    def notify_observers(self, message):
+    def notify_observers(self):
         for observer in self._bservers:
-            observer.update(message)
+            observer.update()

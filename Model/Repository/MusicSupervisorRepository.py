@@ -2,6 +2,7 @@ from Model.Observer.Subject import Subject
 from Model.Models.MuzickiUrednik import MuzickiUrednik
 from Model.Models.NeregistrovaniKorisnik import NeregistrovaniKorisnik
 from Model.Models.Enumerations import Pol
+
 class MusicSupervisorRepository(NeregistrovaniKorisnik):
     def __init__(self) -> None:
         self.subject = Subject()

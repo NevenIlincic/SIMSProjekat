@@ -1,10 +1,12 @@
 from Model.Models.KorisnickiNalog import KorisnickiNalog
 from Model.Models.Enumerations import VrstaKorisnika
+from Model.Observer.Subject import Subject
 
 class UserAccountRepository():
     def __init__(self) -> None:
         self.accounts = []
         self.path = "Data/UserAccounts.txt"
+        self.subject = Subject()
         self.load()
 
     def load(self):
@@ -39,6 +41,7 @@ class UserAccountRepository():
     def add_account(self, account: KorisnickiNalog):
         self.accounts.append(account)
         self.save()
+        self.subject.notify_observers()
 
     def delete_account(self, id: int):
         account_to_remove = None
@@ -49,6 +52,7 @@ class UserAccountRepository():
         if account_to_remove != None:
             self.accounts.remove(account_to_remove)
             self.save()
+            self.subject.notify_observers()
 
     def get_all_accounts(self):
         return self.accounts

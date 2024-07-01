@@ -4,18 +4,24 @@ from Model.Models.Osoba import Osoba
 from Model.Models.KorisnickiNalog import KorisnickiNalog
 
 class Korisnik(Osoba):
-    def __init__(self, ime: str, prezime: str, pol: Pol, blokiran: bool, korisnicki_nalog: KorisnickiNalog):
+    def __init__(self, id: int, ime: str, prezime: str, pol: Pol, blokiran: bool, korisnicki_nalog: KorisnickiNalog):
         super().__init__(ime, prezime, pol, korisnicki_nalog)
+        self.id = id
         self.blokiran = blokiran
 
-    def prijavi_se(self, korisnicko_ime: str, lozinka: str):
-        pass
+    @property
+    def id(self) -> int:
+        return self._id
 
-    def dodaj_recenziju(self, recenzija ):
-        pass
+    @id.setter
+    def id(self, value: int) -> None:
+        self._id = value
 
-    def dodaj_ucesnik_delo(self, delo ):
-        pass
+    @property
+    def blokiran(self) -> bool:
+        return self._blokiran
 
-    def dodaj_grupu(self, grupa):
-        pass
+    @blokiran.setter
+    def blokiran(self, value: bool) -> None:
+        self._blokiran = value
+   

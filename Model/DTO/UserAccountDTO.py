@@ -1,7 +1,7 @@
 from Model.Models.Enumerations import VrstaKorisnika
-from Model.DTO.DTO_BaseClass import DTO
 
-class UserAccountDTO(DTO):
+
+class UserAccountDTO():
     def __init__(self, korisnicko_ime: str, lozinka: str, uloga: VrstaKorisnika) -> None:
         self.korisnicko_ime = korisnicko_ime
         self.lozinka = lozinka
