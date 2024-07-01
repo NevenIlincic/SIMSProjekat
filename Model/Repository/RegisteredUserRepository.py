@@ -1,35 +1,70 @@
 from Model.Models.Korisnik import Korisnik
 from Model.Models.NeregistrovaniKorisnik import NeregistrovaniKorisnik
+from Model.Models.Enumerations import Pol
+from Model.Repository.UserAccountRepository import UserAccountRepository
+from Model.Observer.Subject import Subject
 
 class RegisteredUsersRepository(NeregistrovaniKorisnik):
     def __init__(self) -> None:
         self.users = []
         self.path = "Data/RegisteredUsers.txt"
+        self.__book_repository = UserAccountRepository()
+        self.subject = Subject()
         self.load()
 
     def save(self):
         with open(self.path, "w") as f:
-            for account in self.users:
-                parameters = self.convert_to_list(account)
+            for user in self.users:
+                parameters = self.convert_to_list(user)
                 row = ",".join(parameters) + "\n"
                 f.write(row)
 
+    def load(self):
+        with open(self.path, "r") as f:
+            while True:
+                row = f.readline()
+                if row == None or row == "":
+                    return
+                row = row.strip("\n")
+                parameters = row.split(",")
+                user = self.assign_from_list(parameters)
+                if user == None:
+                    return
+                self.users.append(user)
+
     def generate_id(self):
+        if len(self.users) == 0:
+            return 1
         self.users.sort(key=lambda x: x.id)
         last_user = self.users[-1]
         return last_user.id + 1
 
-    def add_account(self, user: Korisnik):
+    def add_user(self, user: Korisnik):
         self.users.append(user)
         self.save()
         self.subject.notify_observers()
 
     def assign_from_list(self, parameters):
-        return Korisnik()
+        if parameters[0] == "":
+            return None
+        user_account = self.__book_repository.get_by_id(parameters[5])
+        return Korisnik(int(parameters[0]), parameters[1], parameters[2], Pol(parameters[3]), bool(parameters[4]), user_account)
     
-    def convert_to_list(self, entity: KorisnickiNalog):
-        return [str(entity.id), entity.korisnicko_ime, entity.lozinka, entity.uloga]
+    def convert_to_list(self, entity: Korisnik):
+        return [str(entity.id), entity.ime, entity.prezime, entity.pol.value, str(entity.blokiran), str(entity.korisnicki_nalog.id)]
     
+    def delete_user(self, id: int):
+        user_to_remove = None
+        for user in self.users:
+            if user.id == id:
+                user_to_remove = user
+                break
+        if user_to_remove != None:
+            self.users.remove(user_to_remove)
+            self.save()
+            self.subject.notify_observers()
+
+
     def dodaj_recenziju(self, recenzija ):
         pass
 
@@ -53,3 +88,4 @@ class RegisteredUsersRepository(NeregistrovaniKorisnik):
   
     def pretraga(self, upit: str):
         pass
+    

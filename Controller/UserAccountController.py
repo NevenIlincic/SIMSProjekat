@@ -4,19 +4,20 @@ from Model.DTO.UserAccountDTO import UserAccountDTO
 
 class UserAccountController():
     def __init__(self) -> None:
-        self.UserAccountRepository = UserAccountRepository()
+        self.user_account_repository = UserAccountRepository()
     
     def add_account(self, account: UserAccountDTO):
-        id = self.UserAccountRepository.generate_id()
+        id = self.user_account_repository.generate_id()
         new_account = self.convert_DTO_to_model(account)
         new_account.id = id
-        self.UserAccountRepository.add_account(new_account)
+        self.user_account_repository.add_account(new_account)
+        return new_account
     
     def load(self):
-        return self.UserAccountRepository.load()
+        return self.user_account_repository.load()
     
     def delete_account(self, id: int):
-        return self.UserAccountRepository.delete_account(id)
+        return self.user_account_repository.delete_account(id)
     
     def convert_DTO_to_model(self,user_account_dto):
         if isinstance(user_account_dto, UserAccountDTO):

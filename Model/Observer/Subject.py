@@ -12,5 +12,5 @@ class Subject():
             self.observers.remove(observer)
 
     def notify_observers(self):
-        for observer in self._bservers:
+        for observer in self.observers:
             observer.update()

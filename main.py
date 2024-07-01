@@ -2,18 +2,25 @@ import sys
 from PyQt5.QtWidgets import QApplication
 from View.StartingMenuView import MainWindow  # Uvoz klase MainWindow iz StartingMenuView modula
 from Controller.UserAccountController import UserAccountController
+from Controller.RegisteredUserController import RegisteredUserController
 from Model.DTO.UserAccountDTO import UserAccountDTO
 from Model.Models.Enumerations import VrstaKorisnika
+from Model.DTO.UserDTO import UserDTO
+from Model.Models.Enumerations import Pol
 
 if __name__ == "__main__":
     # kontroler = UserAccountController()
-    # # #kontroler.delete_account(2)
+    # #kontroler.delete_account(2)
     # dto = UserAccountDTO("DJomla", "sifrica", "Registrovani korisnik")
-    # kontroler.add_account(dto)
-    app = QApplication(sys.argv)
+    # account = kontroler.add_account(dto)
+    # user_dto = UserDTO("Neven", "Ilincic", Pol.Muski, account)
+    # kontroler_user = RegisteredUserController()
+    # kontroler_user.add_user(user_dto)
     
-    # Instanciranje glavnog prozora
-    main_window = MainWindow()
-    main_window.show()
+    # app = QApplication(sys.argv)
     
-    sys.exit(app.exec_())
+    # # Instanciranje glavnog prozora
+    # main_window = MainWindow()
+    # main_window.show()
+    
+    # sys.exit(app.exec_())

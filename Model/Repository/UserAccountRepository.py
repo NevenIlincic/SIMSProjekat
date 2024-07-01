@@ -18,9 +18,13 @@ class UserAccountRepository():
                 row = row.strip("\n")
                 parameters = row.split(",")
                 account = self.assign_from_list(parameters)
+                if account == None:
+                    return
                 self.accounts.append(account)
     
     def assign_from_list(self, parameters):
+        if parameters[0] == "":
+            return None
         return KorisnickiNalog(int(parameters[0]), parameters[1], parameters[2], parameters[3])
     
     def convert_to_list(self, entity: KorisnickiNalog):
@@ -34,6 +38,8 @@ class UserAccountRepository():
                 f.write(row)
 
     def generate_id(self):
+        if len(self.accounts) == 0:
+            return 1
         self.accounts.sort(key=lambda x: x.id)
         last_account = self.accounts[-1]
         return last_account.id + 1
@@ -56,3 +62,9 @@ class UserAccountRepository():
 
     def get_all_accounts(self):
         return self.accounts
+
+    def get_by_id(self, id):
+        for account in self.accounts:
+            if account.id == id:
+                return account
+        return False

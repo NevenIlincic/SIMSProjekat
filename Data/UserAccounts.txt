@@ -1,2 +1,1 @@
-1,MeXa,sifra,Muzicki urednik
-3,DJomla,sifrica,Registrovani korisnik
+1,DJomla,sifrica,Registrovani korisnik
