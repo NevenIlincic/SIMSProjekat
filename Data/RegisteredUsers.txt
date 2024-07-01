@@ -1,3 +1,2 @@
 1,Neven,Ilincic,muski,False,1
-2,Neven,Ilincic,muski,False,2
-3,Pero,Ilincic,muski,False,3
+3,Pero,Peric,muski,False,3

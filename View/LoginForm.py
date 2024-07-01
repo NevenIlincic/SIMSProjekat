@@ -5,6 +5,8 @@ from PyQt5.QtCore import pyqtSignal
 from Controller.MusicSupervisorController import MusicSupervisorController
 from Model.Models.MuzickiUrednik import MuzickiUrednik
 from View.MusicSupervisorView import MusicSupervisorWindow
+from Model.Service.ComplexSerice import ComplexService
+from View.RegisteredUserMainView import RegisteredUserMainView
 
 
 class LoginForm(QWidget,Ui_Form):
@@ -14,19 +16,20 @@ class LoginForm(QWidget,Ui_Form):
         super().__init__()
         self.setupUi(self)
         self.main_window = None
-        self.supervisor_window = None
+        self.registered_user_window = None
+
 
         self.current_role = role
-        self.controller = None
+        self.complex_service = ComplexService()
         
-        if (role == "Registered User"):
-           # self.controller = RegisteredUserController()
-           pass
-        elif (role == "Music Supervisor"):
-            self.controller = MusicSupervisorController()
-        else:
-            #self.controller = AdministratorController()
-            pass
+        # if (role == "Registered User"):
+        #    # self.controller = RegisteredUserController()
+        #    pass
+        # elif (role == "Music Supervisor"):
+        #     self.controller = MusicSupervisorController()
+        # else:
+        #     #self.controller = AdministratorController()
+        #     pass
 
         # Functions call
         self.pushButton.clicked.connect(self.login)
@@ -40,12 +43,11 @@ class LoginForm(QWidget,Ui_Form):
     def login(self):
         password = self.lineEdit.text()
         username = self.lineEdit_2.text()
-        registered_person = self.controller.login(username, password)
-        print(type(registered_person))
-        if registered_person == False:
-            QMessageBox.information(self, "Poruka", username)
-        if isinstance(registered_person, MuzickiUrednik):
-            print("aa")
-            self.supervisor_window = MusicSupervisorWindow()
-            self.supervisor_window.show()
-            self.close()
+        if self.current_role == "Registered user":
+            dto = self.complex_service.user_login(username, password)
+            if dto != None:
+                self.registered_user_window = RegisteredUserMainView(dto)
+                self.registered_user_window.show()
+                self.close()
+            else:
+                QMessageBox.information(self, "Poruka", "Incorrect username or password!")

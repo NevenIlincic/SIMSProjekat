@@ -18,7 +18,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.pushButton.clicked.connect(self.open_supervisor_menu)
 
     def open_supervisor_menu(self):
-        self.user_login_form = LoginForm("Music Supervisor")
+        self.user_login_form = LoginForm("Registered user")
         self.user_login_form.cancel_signal.connect(self.handle_cancel)
         self.user_login_form.show()
         self.close()
