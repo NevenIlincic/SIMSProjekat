@@ -1,6 +1,5 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow, QMessageBox
-from View.MusicSupervisorView import MusicSupervisorWindow
 from PyQt5.QtWidgets import QApplication
 from View.GeneratedFiles.StartingMenuGenerated import Ui_MainWindow
 from View.LoginForm import LoginForm
@@ -17,7 +16,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         ##Pozivanje funkcija
         self.pushButton.clicked.connect(self.open_supervisor_menu)
-
 
     def open_supervisor_menu(self):
         self.user_login_form = LoginForm("Music Supervisor")
