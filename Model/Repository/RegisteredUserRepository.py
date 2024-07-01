@@ -47,10 +47,14 @@ class RegisteredUsersRepository(NeregistrovaniKorisnik):
     def assign_from_list(self, parameters):
         if parameters[0] == "":
             return None
-        user_account = self.__book_repository.get_by_id(parameters[5])
-        return Korisnik(int(parameters[0]), parameters[1], parameters[2], Pol(parameters[3]), bool(parameters[4]), user_account)
+        user_account = self.__book_repository.get_by_id(int(parameters[5]))
+        blocked = False
+        if parameters[4] == "True":
+            blocked = True
+        return Korisnik(int(parameters[0]), parameters[1], parameters[2], Pol(parameters[3]), blocked, user_account)
     
     def convert_to_list(self, entity: Korisnik):
+        nesto = 2
         return [str(entity.id), entity.ime, entity.prezime, entity.pol.value, str(entity.blokiran), str(entity.korisnicki_nalog.id)]
     
     def delete_user(self, id: int):
@@ -64,6 +68,8 @@ class RegisteredUsersRepository(NeregistrovaniKorisnik):
             self.save()
             self.subject.notify_observers()
 
+    def get_all_users(self):
+        return self.users
 
     def dodaj_recenziju(self, recenzija ):
         pass

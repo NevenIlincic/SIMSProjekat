@@ -9,13 +9,14 @@ from Model.DTO.UserDTO import UserDTO
 from Model.Models.Enumerations import Pol
 
 if __name__ == "__main__":
-    # kontroler = UserAccountController()
+    kontroler = UserAccountController()
     # #kontroler.delete_account(2)
-    # dto = UserAccountDTO("DJomla", "sifrica", "Registrovani korisnik")
-    # account = kontroler.add_account(dto)
-    # user_dto = UserDTO("Neven", "Ilincic", Pol.Muski, account)
-    # kontroler_user = RegisteredUserController()
-    # kontroler_user.add_user(user_dto)
+    dto = UserAccountDTO("Imer", "sifrica", "Registrovani korisnik")
+    account = kontroler.add_account(dto)
+    user_dto = UserDTO("Pero", "Ilincic", Pol.Muski, account)
+    kontroler_user = RegisteredUserController()
+    kontroler_user.add_user(user_dto)
+    #kontroler_user.add_user(user_dto)
     
     # app = QApplication(sys.argv)
     

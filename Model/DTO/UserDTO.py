@@ -1,12 +1,13 @@
 from Model.Models.Enumerations import Pol
 from Model.Models.KorisnickiNalog import KorisnickiNalog
-class UserDTO():
-    def __init__(self, ime: str, prezime: str, pol: Pol, korisnicki_nalog: KorisnickiNalog ) -> None:
-        self.ime = ime
-        self.prezime = prezime
-        self.pol = pol
-        self.korisnicki_nalog = korisnicki_nalog
-    
+
+class UserDTO:
+    def __init__(self, ime: str, prezime: str, pol: Pol, korisnicki_nalog: KorisnickiNalog) -> None:
+        self._ime = ime
+        self._prezime = prezime
+        self._pol = pol
+        self._korisnicki_nalog = korisnicki_nalog
+
     @property
     def ime(self) -> str:
         return self._ime
@@ -24,11 +25,11 @@ class UserDTO():
         self._prezime = novo_prezime
 
     @property
-    def pol(self) -> str:
+    def pol(self) -> Pol:
         return self._pol
 
     @pol.setter
-    def pol(self, novi_pol: str) -> None:
+    def pol(self, novi_pol: Pol) -> None:
         self._pol = novi_pol
 
     @property
