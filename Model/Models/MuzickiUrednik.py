@@ -4,7 +4,7 @@ from Model.Models.KorisnickiNalog import KorisnickiNalog
 
 class MuzickiUrednik(Korisnik):
     def __init__(self, id: int, ime: str, prezime: str, pol: Pol, blokiran: bool, zadaci: list, recenzije: list, korisnicki_nalog: KorisnickiNalog ):
-        super().__init__(ime, prezime, pol, blokiran, korisnicki_nalog)
+        super().__init__(id, ime, prezime, pol, blokiran, korisnicki_nalog)
         self.id = id
         self.zadaci = zadaci
         self.recenzije = recenzije

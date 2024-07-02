@@ -1,2 +1,4 @@
 1,DJomla,sifrica,Registrovani korisnik
 3,Imer,sifrica,Registrovani korisnik
+4,Pera,nesto,Muzicki urednik
+5,Losmi,losmi123,Muzicki urednik

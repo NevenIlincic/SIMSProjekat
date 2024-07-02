@@ -25,7 +25,7 @@ class RegisteredUserController():
         all_users = self.get_all_users()
         found_user = None
         for user in all_users:
-            if user.id == id:
+            if user.korisnicki_nalog.id == id:
                 found_user = user
                 break
         return found_user

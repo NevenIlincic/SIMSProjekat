@@ -13,8 +13,7 @@ class RegisteredUserMainView(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         
         self.user_dto = user_dto
-        if self.user_dto != None:
-            self.show_informations()
+        self.show_informations()
 
         self.pushButton.clicked.connect(self.logout)
 

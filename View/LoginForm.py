@@ -9,6 +9,7 @@ from Model.Service.ComplexSerice import ComplexService
 from View.RegisteredUserMainView import RegisteredUserMainView
 
 
+
 class LoginForm(QWidget,Ui_Form):
     cancel_signal = pyqtSignal()
 
@@ -17,7 +18,7 @@ class LoginForm(QWidget,Ui_Form):
         self.setupUi(self)
         self.main_window = None
         self.registered_user_window = None
-
+        self.supervisor_window = None
 
         self.current_role = role
         self.complex_service = ComplexService()
@@ -44,7 +45,7 @@ class LoginForm(QWidget,Ui_Form):
         password = self.lineEdit.text()
         username = self.lineEdit_2.text()
         if self.current_role == "Registered user":
-            dto = self.complex_service.user_login(username, password)
+            dto = self.complex_service.account_login(username, password, self.current_role)
             if dto != None:
                 self.registered_user_window = RegisteredUserMainView(dto)
                 self.registered_user_window.logout_signal.connect(self.return_to_main)
@@ -52,3 +53,16 @@ class LoginForm(QWidget,Ui_Form):
                 self.close()
             else:
                 QMessageBox.information(self, "Poruka", "Incorrect username or password!")
+
+        if self.current_role == "Music supervisor":
+            self.check_login_supervisor(username, password)
+
+    def check_login_supervisor(self, username, password):
+        dto = self.complex_service.account_login(username, password, self.current_role)
+        if dto != None:
+            self.supervisor_window = MusicSupervisorWindow(dto)
+            self.supervisor_window.logout_signal.connect(self.return_to_main)
+            self.supervisor_window.show()
+            self.close()
+        else:
+            QMessageBox.information(self, "Poruka", "Incorrect username or password!")
