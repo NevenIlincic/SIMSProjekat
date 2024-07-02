@@ -1,5 +1,5 @@
 from Model.Models.Osoba import Osoba
-from SIMSProjekat.Model.Models.Enumerations import Pol
+from Model.Models.Enumerations import Pol
 
 class Administrator(Osoba):
     def __init__(self, ime: str, prezime: str, pol: Pol, zadaci: list):
