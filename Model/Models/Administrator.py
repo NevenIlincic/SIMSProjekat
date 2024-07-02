@@ -1,37 +1,25 @@
 from Model.Models.Osoba import Osoba
 from Model.Models.Enumerations import Pol
+from Model.Models.KorisnickiNalog import KorisnickiNalog
 
 class Administrator(Osoba):
-    def __init__(self, ime: str, prezime: str, pol: Pol, zadaci: list):
-        super().__init__(ime, prezime, pol)
+    def __init__(self, id:int, ime: str, prezime: str, pol: Pol, zadaci: list, korisnicki_nalog: KorisnickiNalog):
+        super().__init__(ime, prezime, pol, korisnicki_nalog)
+        self.id = id
         self.zadaci = zadaci
+       
+    @property
+    def id(self) -> bool:
+        return self._id
 
-    def dodaj_urednika(self, urednik):
-        pass
+    @id.setter
+    def id(self, value: bool) -> None:
+        self._id = value
 
-    def izmeni_urednika(self, urednik):
-        pass
+    @property
+    def zadaci(self) -> bool:
+        return self._zadaci
 
-    def pregledaj_urednike(self):
-        pass
-
-    def obrisi_urednika(self, urednik):
-        pass
-
-    def registruj_izvodjaca_za_reklamu(self, izvodjac):
-        pass
-
-    def blokiraj_korisnika(self, korisnik):
-        pass
-
-    def brisanje_korisnika(self, korisnik):
-        pass
-
-    def pregledaj_detalje_o_pregledima_stranica(self):
-        pass
-
-    def zadaj_zadatak(self, zadatak):
-        pass
-
-    def pregledaj_zadatke_muzickih_urednika(self):
-        pass
+    @zadaci.setter
+    def zadaci(self, value: bool) -> None:
+        self._zadaci = value
