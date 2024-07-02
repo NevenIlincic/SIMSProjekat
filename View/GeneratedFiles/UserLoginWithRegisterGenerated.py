@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'UI/RegisteredUserLoginForm.ui'
+# Form implementation generated from reading ui file 'UI/UserLoginFormWithRegister.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(404, 151)
+        Form.resize(408, 213)
         self.pushButton = QtWidgets.QPushButton(Form)
         self.pushButton.setGeometry(QtCore.QRect(270, 40, 93, 28))
         self.pushButton.setObjectName("pushButton")
@@ -40,6 +40,15 @@ class Ui_Form(object):
         self.lineEdit_2 = QtWidgets.QLineEdit(Form)
         self.lineEdit_2.setGeometry(QtCore.QRect(110, 40, 113, 22))
         self.lineEdit_2.setObjectName("lineEdit_2")
+        self.label_3 = QtWidgets.QLabel(Form)
+        self.label_3.setGeometry(QtCore.QRect(30, 140, 171, 31))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.label_3.setFont(font)
+        self.label_3.setObjectName("label_3")
+        self.pushButton_3 = QtWidgets.QPushButton(Form)
+        self.pushButton_3.setGeometry(QtCore.QRect(210, 140, 91, 31))
+        self.pushButton_3.setObjectName("pushButton_3")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -51,6 +60,8 @@ class Ui_Form(object):
         self.pushButton_2.setText(_translate("Form", "Cancel"))
         self.label.setText(_translate("Form", "Username"))
         self.label_2.setText(_translate("Form", "Password"))
+        self.label_3.setText(_translate("Form", "Dont have an account?"))
+        self.pushButton_3.setText(_translate("Form", "Register"))
 
 
 if __name__ == "__main__":
