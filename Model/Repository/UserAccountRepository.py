@@ -63,6 +63,12 @@ class UserAccountRepository():
     def get_all_accounts(self):
         return self.accounts
 
+    def get_by_username(self, username):
+        for account in self.accounts:
+            if account.korisnicko_ime == username:
+                return account
+        return None
+
     def get_by_id(self, id):
         for account in self.accounts:
             if account.id == id:
