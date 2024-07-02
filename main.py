@@ -7,6 +7,7 @@ from Model.DTO.UserAccountDTO import UserAccountDTO
 from Model.Models.Enumerations import VrstaKorisnika
 from Model.DTO.UserDTO import UserDTO
 from Model.Models.Enumerations import Pol
+from Model.Service.ComplexSerice import ComplexService
 
 if __name__ == "__main__":
     # kontroler = UserAccountController()
@@ -17,7 +18,8 @@ if __name__ == "__main__":
     # kontroler_user = RegisteredUserController()
     # kontroler_user.add_user(user_dto)
     #kontroler_user.add_user(user_dto)
-    
+    # service = ComplexService()
+    # service.delete_registered_user(2)
     app = QApplication(sys.argv)
     
     # Instanciranje glavnog prozora

@@ -67,6 +67,7 @@ class RegisteredUsersRepository(NeregistrovaniKorisnik):
             self.users.remove(user_to_remove)
             self.save()
             self.subject.notify_observers()
+        return user_to_remove
 
     def get_all_users(self):
         return self.users

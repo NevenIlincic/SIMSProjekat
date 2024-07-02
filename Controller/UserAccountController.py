@@ -22,6 +22,9 @@ class UserAccountController():
     def get_all_accounts(self):
         return self.user_account_repository.get_all_accounts()
     
+    def get_account_by_id(self, id: int):
+        return self.user_account_repository.get_by_id(id)
+
     def convert_DTO_to_model(self,user_account_dto):
         if isinstance(user_account_dto, UserAccountDTO):
             return KorisnickiNalog(0, user_account_dto.korisnicko_ime, user_account_dto.lozinka, user_account_dto.uloga)

@@ -25,5 +25,12 @@ class ComplexService():
                                                     found_user.prezime, found_user.pol, found_user.korisnicki_nalog.uloga)
         return user_informations_dto
         
-        
+    def delete_registered_user(self, id: int):
+        user_to_remove = self.registered_account_controller.delete_account(id)
+        if user_to_remove == None: 
+            return None
+        account_to_remove = self.user_account_controller.get_account_by_id(user_to_remove.id)
+        self.user_account_controller.delete_account(account_to_remove.id)
+        return user_to_remove
+
 
