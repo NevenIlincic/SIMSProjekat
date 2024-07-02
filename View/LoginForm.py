@@ -47,6 +47,7 @@ class LoginForm(QWidget,Ui_Form):
             dto = self.complex_service.user_login(username, password)
             if dto != None:
                 self.registered_user_window = RegisteredUserMainView(dto)
+                self.registered_user_window.logout_signal.connect(self.return_to_main)
                 self.registered_user_window.show()
                 self.close()
             else:
