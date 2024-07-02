@@ -6,7 +6,7 @@ from Controller.MusicSupervisorController import MusicSupervisorController
 from Model.Models.MuzickiUrednik import MuzickiUrednik
 from View.MusicSupervisorView import MusicSupervisorWindow
 from Model.Service.ComplexSerice import ComplexService
-from View.RegisteredUserMainView import RegisteredUserMainView
+from View.RegisteredUserHomeView import RegisteredUserHomeView
 
 
 class LoginForm(QWidget,Ui_Form):
@@ -46,7 +46,7 @@ class LoginForm(QWidget,Ui_Form):
         if self.current_role == "Registered user":
             dto = self.complex_service.user_login(username, password)
             if dto != None:
-                self.registered_user_window = RegisteredUserMainView(dto)
+                self.registered_user_window = RegisteredUserHomeView(dto)
                 self.registered_user_window.logout_signal.connect(self.return_to_main)
                 self.registered_user_window.show()
                 self.close()
