@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QMainWindow, QMessageBox
 from PyQt5.QtWidgets import QApplication
 from View.GeneratedFiles.StartingMenuGenerated import Ui_MainWindow
 from View.LoginForm import LoginForm
+from View.RegisteredUserMainView import RegisteredUserMainView
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -13,15 +14,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.user_login_form = None
         self.administrator_login_form = None
         self.music_supervisor_login_form = None
-
+        
         ##Pozivanje funkcija
         self.pushButton.clicked.connect(self.open_supervisor_menu)
+        #self.user_main_window.logout_signal.connect(self.nesto)
 
     def open_supervisor_menu(self):
-        self.user_login_form = LoginForm("Music Supervisor")
+        self.user_login_form = LoginForm("Registered user")
         self.user_login_form.cancel_signal.connect(self.handle_cancel)
         self.user_login_form.show()
         self.close()
        
     def handle_cancel(self):
         self.show()
+
+    def nesto(self):
+        print("AAA")
+        self.show()
+ 
