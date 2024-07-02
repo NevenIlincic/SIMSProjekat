@@ -2,6 +2,7 @@ from Controller.UserAccountController import UserAccountController
 from Controller.RegisteredUserController import RegisteredUserController
 from Model.DTO.UserInformationsDTO import UserInformationsDTO
 from Controller.MusicSupervisorController import MusicSupervisorController
+from Model.DTO import UserDTO, UserAccountDTO
 from Controller.AdministratorController import AdministratorController
 
 class ComplexService():
@@ -44,3 +45,30 @@ class ComplexService():
         self.user_account_controller.delete_account(account_to_remove.id)
         return user_to_remove
 
+    def validate_data_for_registration(self, user_dto : UserDTO, user_account_dto : UserAccountDTO):
+        error_message = ""
+        valid = True
+
+        message, valid_password = self.user_account_controller.valid_password(user_account_dto)
+        if not valid_password:
+            error_message = message + " "
+
+        message, valid_name = self.registered_account_controller.valid_name(user_dto)
+        if not valid_name:
+            error_message += message + " "
+
+        message, valid_username = self.user_account_controller.valid_username(user_account_dto)
+        if not valid_username:
+            error_message += message + " "
+
+
+        if (valid_username == False or valid_name == False or valid_password == False):
+            valid = False
+
+        return error_message, valid
+    
+
+    def register_new_user(self, user_dto, user_account_dto):  
+        account = self.user_account_controller.add_account(user_account_dto)
+        user_dto.korisnicki_nalog = account
+        self.registered_account_controller.add_user(user_dto)

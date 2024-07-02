@@ -114,6 +114,16 @@
      <height>22</height>
     </rect>
    </property>
+   <item>
+    <property name="text">
+     <string>musko</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>zensko</string>
+    </property>
+   </item>
   </widget>
   <widget class="QLabel" name="label_5">
    <property name="geometry">

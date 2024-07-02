@@ -2,4 +2,8 @@
 3,Imer,sifrica,Registrovani korisnik
 4,Pera,nesto,Muzicki urednik
 5,Losmi,losmi123,Muzicki urednik
-6,Nole,GOAT,Administrator
+6,qweqwrew,peraA123-,Registrovani korisnik
+7,pera,Pera123_,Registrovani korisnik
+8,qweqwe,pPEDQW123-,Registrovani korisnik
+9,dfgdfgdfg,Peraer123-,Registrovani korisnik
+10,Nole,GOAT,Administrator

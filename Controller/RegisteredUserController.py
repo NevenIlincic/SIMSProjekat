@@ -33,3 +33,22 @@ class RegisteredUserController():
     def convert_DTO_to_model(self,user_dto):
         if isinstance(user_dto, UserDTO):
             return Korisnik(0, user_dto.ime, user_dto.prezime, user_dto.pol, False, user_dto.korisnicki_nalog)
+        
+    
+    def valid_name(self, user_dto):
+        name : str = user_dto.ime
+        surname : str = user_dto.prezime
+        error_message_name = "Name is not valid"
+        error_message_surname = "Surname is not valid"
+
+        if not name.isalpha(): 
+            return error_message_name, False
+        if not surname.isalpha():
+            return error_message_surname, False
+        
+        if len(name) > 25:
+            return error_message_name, False
+        if len(surname) > 25:
+            return error_message_surname, False
+        
+        return "", True
