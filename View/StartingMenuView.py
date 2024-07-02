@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QApplication
 from View.GeneratedFiles.StartingMenuGenerated import Ui_MainWindow
 from View.LoginForm import LoginForm
 from View.RegisteredUserMainView import RegisteredUserMainView
-
+from View.LoginFormWithRegister import LoginFormWithRegister
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
@@ -21,7 +21,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #self.user_main_window.logout_signal.connect(self.nesto)
 
     def open_user_menu(self):
-        self.user_login_form = LoginForm("Registered user")
+        self.user_login_form = LoginFormWithRegister()
         self.user_login_form.cancel_signal.connect(self.handle_cancel)
         self.user_login_form.show()
         self.close()
