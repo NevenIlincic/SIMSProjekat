@@ -7,3 +7,6 @@
 8,qweqwe,pPEDQW123-,Registrovani korisnik
 9,dfgdfgdfg,Peraer123-,Registrovani korisnik
 10,Nole,GOAT,Administrator
+11,Rafa,Rafa123_,Muzicki urednik
+12,ad2,Ad2_,Muzicki urednik
+13,Rozda,Rdoz1_,Muzicki urednik

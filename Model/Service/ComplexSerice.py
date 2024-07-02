@@ -72,3 +72,8 @@ class ComplexService():
         account = self.user_account_controller.add_account(user_account_dto)
         user_dto.korisnicki_nalog = account
         self.registered_account_controller.add_user(user_dto)
+
+    def register_new_supervisor(self, user_dto, user_account_dto):
+        account = self.user_account_controller.add_account(user_account_dto)
+        user_dto.korisnicki_nalog = account
+        self.supervisor_controller.add_supervisor(user_dto)

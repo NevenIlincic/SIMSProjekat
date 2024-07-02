@@ -1,2 +1,2 @@
-1,Neven,Ilincic,muski,false,1-2-3,1-2-3,4
-2,Marko,Peric,muski,false,1-2-3,1-2-3,5
+1,Neven,Ilincic,muski,False,null,null,4
+2,Marko,Peric,muski,False,null,null,5
