@@ -6,3 +6,4 @@
 7,pera,Pera123_,Registrovani korisnik
 8,qweqwe,pPEDQW123-,Registrovani korisnik
 9,dfgdfgdfg,Peraer123-,Registrovani korisnik
+10,Nole,GOAT,Administrator

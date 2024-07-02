@@ -18,7 +18,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         ##Pozivanje funkcija
         self.pushButton.clicked.connect(self.open_user_menu)
         self.pushButton_2.clicked.connect(self.open_supervisor_menu)
-        #self.user_main_window.logout_signal.connect(self.nesto)
+        self.pushButton_3.clicked.connect(self.open_administrator_menu)
 
     def open_user_menu(self):
         self.user_login_form = LoginFormWithRegister()
@@ -33,5 +33,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.music_supervisor_login_form = LoginForm("Music supervisor")
         self.music_supervisor_login_form.cancel_signal.connect(self.handle_cancel)
         self.music_supervisor_login_form.show()
+        self.close()
+
+    def open_administrator_menu(self):
+        self.administrator_login_form = LoginForm("Administrator")
+        self.administrator_login_form.cancel_signal.connect(self.handle_cancel)
+        self.administrator_login_form.show()
         self.close()
  
