@@ -1,0 +1,3 @@
+1;Malo cemo da se kupamo;null;nesto;122;9;40;1
+2;Malo cemo da se kupamo;null;nesto;122;9;40;1
+3;Malo cemo da se kupamo;null;nesto;122;9;40;1

@@ -6,6 +6,3 @@ class MuzickoDelo(MuzickiElement):
         super().__init__(id, naziv, slika, pregledi, broj_ocena, zbir_ocena)
         self.tekst = tekst
         self.grupa = grupa
-        
-    def reprodukuj_delo(self, je_registrovan: bool):
-        pass
