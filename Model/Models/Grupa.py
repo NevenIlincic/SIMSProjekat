@@ -5,4 +5,10 @@ class Grupa(MuzickiElement):
         super().__init__(id, naziv, slika, pregledi, broj_ocena, zbir_ocena)
         self.ucesnici = ucesnici
 
-        
+    @property
+    def ucesnici(self):
+        return self._ucesnici
+
+    @ucesnici.setter
+    def ucesnici(self, value):
+        self._ucesnici = value

@@ -6,6 +6,7 @@ from PyQt5.QtCore import pyqtSignal
 from Model.DTO.UserInformationsDTO import UserInformationsDTO
 from PyQt5.QtCore import pyqtSignal
 from View.AddParticipantView import AddParticipantWindow
+from View.AddGroupFormView import GroupForm
 
 class MusicSupervisorWindow(QMainWindow,  Ui_MainWindow):
     logout_signal = pyqtSignal()
@@ -14,6 +15,8 @@ class MusicSupervisorWindow(QMainWindow,  Ui_MainWindow):
         self.setupUi(self)
 
         self.add_participant_window = None
+        self.add_musical_piece_window = None
+        self.add_group_window = None
 
         self.supervisor_dto = dto
         self.show_informations()
@@ -36,3 +39,7 @@ class MusicSupervisorWindow(QMainWindow,  Ui_MainWindow):
     def add_musical_piece(self):
         self.add_musical_piece_window = AddMusicalPieceWindow()
         self.add_musical_piece_window.show()
+
+    def add_group(self):
+        self.add_group_window = GroupForm()
+        self.add_group_window.show()
