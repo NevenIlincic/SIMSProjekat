@@ -11,6 +11,7 @@ class ComplexService():
         self.user_account_controller = UserAccountController()
         self.registered_account_controller = RegisteredUserController()
         self.supervisor_controller = MusicSupervisorController()
+        self.participant_controller = ParticipantController()
     
     def account_login(self, username, password, role: str):
         all_accounts = self.user_account_controller.get_all_accounts()
@@ -45,3 +46,5 @@ class ComplexService():
         self.user_account_controller.delete_account(account_to_remove.id)
         return user_to_remove
 
+    def add_new_participant(self, participant_dto):  
+        self.participant_controller.add_participant(participant_dto)
