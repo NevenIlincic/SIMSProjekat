@@ -1,7 +1,9 @@
 from Controller.EditorsReviewController import EditorsReviewController
+from Controller.GroupController import GroupController
 from Controller.MusicalPieceController import MusicalPieceController
 from Controller.UserAccountController import UserAccountController
 from Controller.RegisteredUserController import RegisteredUserController
+from Model.DTO.GroupFormDTO import GroupFormDTO
 from Model.DTO.UserInformationsDTO import UserInformationsDTO
 from Controller.MusicSupervisorController import MusicSupervisorController
 from Model.DTO import UserDTO, UserAccountDTO
@@ -15,6 +17,7 @@ class ComplexService():
         self.supervisor_controller = MusicSupervisorController()
         self.participant_controller = ParticipantController()
         self.administrator_controller = AdministratorController()
+        self.group_controller = GroupController()
         
     def account_login(self, username, password, role: str):
         all_accounts = self.user_account_controller.get_all_accounts()
@@ -71,6 +74,13 @@ class ComplexService():
 
         return error_message, valid
     
+    def validate_data_for_group_adding(self, group_form_dto: GroupFormDTO):
+        if self.group_controller.get_by_naziv(group_form_dto.name) != None:
+            return ("Group with that name already exists!", False)
+        if group_form_dto.name == "":
+            return ("Group has to have name!", False)
+        return ("",True)
+
     def register_new_user(self, user_dto, user_account_dto):  
         account = self.user_account_controller.add_account(user_account_dto)
         user_dto.korisnicki_nalog = account
@@ -84,3 +94,5 @@ class ComplexService():
     def add_new_participant(self, participant_dto): 
         self.participant_controller.add_participant(participant_dto) 
     
+    def add_new_group(self, group_dto):
+        self.group_controller.add_group(group_dto)

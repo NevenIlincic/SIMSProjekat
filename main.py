@@ -14,6 +14,7 @@ from Controller.GroupController import GroupController
 from Model.DTO.GroupDTO import GroupDTO
 from Controller.ParticipantController import ParticipantController
 from Model.Models.Grupa import Grupa
+from View.AddGroupFormView import GroupForm
 
 
 if __name__ == "__main__":
