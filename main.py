@@ -8,6 +8,13 @@ from Model.Models.Enumerations import VrstaKorisnika
 from Model.DTO.UserDTO import UserDTO
 from Model.Models.Enumerations import Pol
 from Model.Service.ComplexSerice import ComplexService
+from Controller.MusicalPieceController import MusicalPieceController
+from Model.DTO.MusicalPieceDTO import MusicalPieceDTO
+from Controller.GroupController import GroupController
+from Model.DTO.GroupDTO import GroupDTO
+from Controller.ParticipantController import ParticipantController
+from Model.Models.Grupa import Grupa
+
 
 if __name__ == "__main__":
     # kontroler = UserAccountController()
@@ -20,6 +27,15 @@ if __name__ == "__main__":
     #kontroler_user.add_user(user_dto)
     # service = ComplexService()
     # service.delete_registered_user(2)
+    #
+    pKontroler = ParticipantController()
+    grKontroler = GroupController(pKontroler)
+    grupa = grKontroler.get_by_id(1)
+    # grDto = GroupDTO("Crvena Jabuka", "null", 122, 12, 35, "nesto", [])
+    # grKontroler.add_group(grDto)
+    kontroler = MusicalPieceController(grKontroler)
+    dto = MusicalPieceDTO("Malo cemo da se kupamo", "null", "nesto", 122, 9, 40, grupa)
+    kontroler.add_piece(dto)
     app = QApplication(sys.argv)
     
     # Instanciranje glavnog prozora
