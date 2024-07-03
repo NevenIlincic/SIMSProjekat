@@ -28,14 +28,14 @@ if __name__ == "__main__":
     # service = ComplexService()
     # service.delete_registered_user(2)
     #
-    pKontroler = ParticipantController()
-    grKontroler = GroupController(pKontroler)
-    grupa = grKontroler.get_by_id(1)
-    # grDto = GroupDTO("Crvena Jabuka", "null", 122, 12, 35, "nesto", [])
-    # grKontroler.add_group(grDto)
-    kontroler = MusicalPieceController(grKontroler)
-    dto = MusicalPieceDTO("Malo cemo da se kupamo", "null", "nesto", 122, 9, 40, grupa)
-    kontroler.add_piece(dto)
+    # pKontroler = ParticipantController()
+    # grKontroler = GroupController(pKontroler)
+    # grupa = grKontroler.get_by_id(1)
+    # # grDto = GroupDTO("Crvena Jabuka", "null", 122, 12, 35, "nesto", [])
+    # # grKontroler.add_group(grDto)
+    # kontroler = MusicalPieceController(grKontroler)
+    # dto = MusicalPieceDTO("Malo cemo da se kupamo", "null", "nesto", 122, 9, 40, grupa)
+    # kontroler.add_piece(dto)
     app = QApplication(sys.argv)
     
     # Instanciranje glavnog prozora

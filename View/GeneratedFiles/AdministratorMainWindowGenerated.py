@@ -28,6 +28,9 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.title_label.setFont(font)
         self.title_label.setObjectName("title_label")
+        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_2.setGeometry(QtCore.QRect(710, 40, 131, 31))
+        self.pushButton_2.setObjectName("pushButton_2")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -41,6 +44,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.pushButton.setText(_translate("MainWindow", "Logout"))
         self.title_label.setText(_translate("MainWindow", "Welcome back, Firstname Lastname!"))
+        self.pushButton_2.setText(_translate("MainWindow", "Add Supervisor"))
 
 
 if __name__ == "__main__":

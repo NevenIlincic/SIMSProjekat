@@ -8,3 +8,4 @@
 9,dfgdfgdfg,Peraer123-,Registrovani korisnik
 10,Nole,GOAT,Administrator
 11,perapera,Perapera123+,Registrovani korisnik
+12,Roda,Roda12_,Muzicki urednik
