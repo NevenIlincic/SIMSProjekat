@@ -1,6 +1,6 @@
 from Model.Models.MuzickiElement import MuzickiElement
 from Model.Observer.Subject import Subject
-from Model.Models import RecenzijaUrednika
+from Model.Models.RecenzijaUrednika import RecenzijaUrednika
 from Model.Repository.MusicalElementRepository import MusicalElementRepository
 class EditorsReviewRepository():
     def __init__(self) -> None:

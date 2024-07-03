@@ -4,6 +4,7 @@ from Model.Models.NeregistrovaniKorisnik import NeregistrovaniKorisnik
 from Model.Models.Enumerations import Pol
 from Model.Repository.UserAccountRepository import UserAccountRepository
 from Model.Repository.EditorsReviewRepository import EditorsReviewRepository
+from Model.Repository.TaskRepository import TaskRepository
 
 class MusicSupervisorRepository(NeregistrovaniKorisnik):
     def __init__(self) -> None:
@@ -11,6 +12,7 @@ class MusicSupervisorRepository(NeregistrovaniKorisnik):
         self.supervisors = []
         self.__user_account_repository = UserAccountRepository()
         self.__editors_review_repository = EditorsReviewRepository()
+        self.__task_repository = TaskRepository()
         self.path = "Data/MusicSupervisors.txt"
         self.load()
 
@@ -37,9 +39,11 @@ class MusicSupervisorRepository(NeregistrovaniKorisnik):
             blocked = True
 
         tasks = [] #Dodati ovo kao parametar
-        #for id_str in parameters[5].split("-"):
-            #task = self.__task_repository.get_by_id(int(id_str))
-            #tasks.append(task)
+        if parameters[5] != "":
+            for id_str in parameters[5].split("-"):
+                task = self.__task_repository.get_by_id(int(id_str))
+                tasks.append(task)
+
         reviews = []
         if parameters[6] != "":
             for id_str in parameters[6].split("-"):
@@ -47,7 +51,7 @@ class MusicSupervisorRepository(NeregistrovaniKorisnik):
                 reviews.append(review)
         
         return MuzickiUrednik(int(parameters[0]), parameters[1], parameters[2], Pol(parameters[3]), 
-                              blocked, [parameters[5]], reviews, user_account)
+                              blocked, tasks, reviews, user_account)
 
     def convert_to_list(self, entity: MuzickiUrednik):
         tasks = ",".join(entity.zadaci)

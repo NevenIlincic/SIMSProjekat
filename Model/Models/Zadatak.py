@@ -15,24 +15,24 @@ class Zadatak:
 
     @property
     def tekst(self):
-        return self.tekst
+        return self._tekst
 
     @tekst.setter
     def tekst(self, value):
-        self.tekst = value
+        self._tekst = value
 
     @property
     def uradjen(self):
-        return self.uradjen
+        return self._uradjen
 
     @uradjen.setter
     def uradjen(self, value):
-        self.uradjen = value
+        self._uradjen = value
 
     @property
     def muzicki_elementi(self):
-        return self.muzicki_elementi
+        return self._muzicki_elementi
 
     @muzicki_elementi.setter
     def muzicki_elementi(self, value):
-        self.muzicki_elementi = value
+        self._muzicki_elementi = value
