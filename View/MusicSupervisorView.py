@@ -6,6 +6,8 @@ from PyQt5.QtCore import pyqtSignal
 from Model.DTO.UserInformationsDTO import UserInformationsDTO
 from PyQt5.QtCore import pyqtSignal
 from View.AddParticipantView import AddParticipantWindow
+from Model.Service.ComplexSerice import ComplexService
+from View.CardWidget import CardWidget
 from View.AddGroupFormView import GroupForm
 
 class MusicSupervisorWindow(QMainWindow,  Ui_MainWindow):
@@ -13,6 +15,12 @@ class MusicSupervisorWindow(QMainWindow,  Ui_MainWindow):
     def __init__(self, dto: UserInformationsDTO):
         super().__init__()
         self.setupUi(self)
+        self.complex = ComplexService()
+        participants = self.complex.participant_controller.get_all_participants()[:3]
+
+        for participant in participants:
+            card = CardWidget(participant)
+            self.artist_layout_2.addWidget(card)
 
         self.add_participant_window = None
         self.add_musical_piece_window = None
