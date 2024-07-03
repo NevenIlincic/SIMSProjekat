@@ -25,16 +25,17 @@ class GroupRepository():
     def assign_from_list(self, parameters):
         if parameters[0] == "":
             return None
-        ucesnici_ids = parameters[6].split("|")
-        ucesnici = [self.participant_repository.get_by_id(int(u_id)) for u_id in ucesnici_ids]
+        ucesnici = []
+        if parameters[6] != "":
+            ucesnici_ids = parameters[6].split("|")
+            ucesnici = [self.participant_repository.get_by_id(int(u_id)) for u_id in ucesnici_ids]
         return Grupa(
             int(parameters[0]),    # id
             parameters[1],         # naziv
             parameters[2],         # slika
-            parameters[3],         # tekst
-            int(parameters[4]),    # pregledi
-            int(parameters[5]),    # broj_ocena
-            int(parameters[6]),    # zbir_ocena
+            int(parameters[3]),    # pregledi
+            int(parameters[4]),    # broj_ocena
+            int(parameters[5]),    # zbir_ocena
             ucesnici               # ucesnici
         )
     
@@ -44,7 +45,6 @@ class GroupRepository():
             str(entity.id), 
             entity.naziv, 
             entity.slika, 
-            entity.tekst, 
             str(entity.pregledi), 
             str(entity.broj_ocena), 
             str(entity.zbir_ocena), 
@@ -89,3 +89,10 @@ class GroupRepository():
             if group.naziv == naziv:
                 return group
         return None
+
+    #dodato
+    def get_by_id(self, id):
+        for group in self.groups:
+            if group.id == id:
+                return group
+        return False

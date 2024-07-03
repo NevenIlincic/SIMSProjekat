@@ -2,6 +2,8 @@ from Controller.UserAccountController import UserAccountController
 from Controller.RegisteredUserController import RegisteredUserController
 from Model.DTO.UserInformationsDTO import UserInformationsDTO
 from Controller.MusicSupervisorController import MusicSupervisorController
+from Model.DTO import UserDTO, UserAccountDTO
+from Controller.AdministratorController import AdministratorController
 from Controller.ParticipantController import ParticipantController
 
 class ComplexService():
@@ -9,7 +11,6 @@ class ComplexService():
         self.user_account_controller = UserAccountController()
         self.registered_account_controller = RegisteredUserController()
         self.supervisor_controller = MusicSupervisorController()
-        self.participant_controller = ParticipantController()
     
     def account_login(self, username, password, role: str):
         all_accounts = self.user_account_controller.get_all_accounts()
@@ -25,12 +26,13 @@ class ComplexService():
         found_user = None
         if role == "Registered user":
             found_user = self.registered_account_controller.find_user_by_account(found_account.id)
-            if found_user == None:
-                return None
-        if role == "Music supervisor":
+        elif role == "Music supervisor":
             found_user = self.supervisor_controller.find_supervisor_by_account(found_account.id)
-            if found_user == None:
-                return None
+        else:
+            found_user = self.administrator_controller.find_administrator_by_account(found_account.id)
+            
+        if found_user == None:
+                return None  
         user_informations_dto = UserInformationsDTO(found_account.korisnicko_ime, found_account.lozinka, found_user.ime,
                                                     found_user.prezime, found_user.pol, found_user.korisnicki_nalog.uloga)
         return user_informations_dto
@@ -43,5 +45,3 @@ class ComplexService():
         self.user_account_controller.delete_account(account_to_remove.id)
         return user_to_remove
 
-    def add_new_participant(self, participant_dto):  
-        self.participant_controller.add_participant(participant_dto)
