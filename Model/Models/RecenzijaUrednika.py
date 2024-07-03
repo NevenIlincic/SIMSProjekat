@@ -1,11 +1,20 @@
 from Model.Models.MuzickiElement import MuzickiElement
 
 class RecenzijaUrednika:
-    def __init__(self, opis: str, ocena: int, menja_se: bool, muzicki_element: MuzickiElement):
+    def __init__(self, id: int, opis: str, ocena: int, menja_se: bool, muzicki_element: MuzickiElement):
+        self.id = id
         self.opis = opis
         self.ocena = ocena
         self.menja_se = menja_se
         self.muzicki_element = muzicki_element
+
+    @property
+    def id(self):
+        return self._id
+
+    @id.setter
+    def id(self, value):
+        self._id = value
 
     @property
     def opis(self):

@@ -31,7 +31,7 @@ class ParticipantController():
                 participant_dto.zbir_ocena, 
                 participant_dto.ime, 
                 participant_dto.prezime, 
-                Pol[participant_dto.pol],  # assuming pol is passed as string and needs to be converted to Enum
+                participant_dto.pol,
                 participant_dto.datum_rodjenja, 
                 participant_dto.biografija, 
                 participant_dto.zanrovi, 

@@ -4,13 +4,14 @@ from Model.DTO.UserInformationsDTO import UserInformationsDTO
 from Controller.MusicSupervisorController import MusicSupervisorController
 from Model.DTO import UserDTO, UserAccountDTO
 from Controller.AdministratorController import AdministratorController
+from Controller.ParticipantController import ParticipantController
 
 class ComplexService():
     def __init__(self) -> None:
         self.user_account_controller = UserAccountController()
         self.registered_account_controller = RegisteredUserController()
         self.supervisor_controller = MusicSupervisorController()
-        self.administrator_controller = AdministratorController()
+        self.participant_controller = ParticipantController()
     
     def account_login(self, username, password, role: str):
         all_accounts = self.user_account_controller.get_all_accounts()
@@ -67,7 +68,6 @@ class ComplexService():
 
         return error_message, valid
     
-
     def register_new_user(self, user_dto, user_account_dto):  
         account = self.user_account_controller.add_account(user_account_dto)
         user_dto.korisnicki_nalog = account
@@ -77,3 +77,6 @@ class ComplexService():
         account = self.user_account_controller.add_account(user_account_dto)
         user_dto.korisnicki_nalog = account
         self.supervisor_controller.add_supervisor(user_dto)
+
+    def add_new_participant(self, participant_dto): 
+                self.participant_controller.add_participant(participant_dto) 
