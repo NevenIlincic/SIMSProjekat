@@ -34,7 +34,7 @@ class EditorsReviewRepository():
         if parameters[3] == "False":
             b = False
         else:
-            b = bool(parameters[2])
+            b = bool(parameters[3])
 
         return RecenzijaUrednika(int(parameters[0]), parameters[1] ,int(parameters[2]), b, muzicki_element)
     

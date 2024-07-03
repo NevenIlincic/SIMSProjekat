@@ -1,5 +1,5 @@
 class Zadatak:
-    def __init__(self, id: int, tekst: str, uradjen: bool, muzicki_elementi: list):
+    def __init__(self, id : int ,tekst: str, uradjen: bool, muzicki_elementi: list):
         self.id = id
         self.tekst = tekst
         self.uradjen = uradjen
@@ -15,24 +15,24 @@ class Zadatak:
 
     @property
     def tekst(self):
-        return self._tekst
+        return self.tekst
 
     @tekst.setter
     def tekst(self, value):
-        self._tekst = value
+        self.tekst = value
 
     @property
     def uradjen(self):
-        return self._uradjen
+        return self.uradjen
 
     @uradjen.setter
     def uradjen(self, value):
-        self._uradjen = value
+        self.uradjen = value
 
     @property
     def muzicki_elementi(self):
-        return self._muzicki_elementi
+        return self.muzicki_elementi
 
     @muzicki_elementi.setter
     def muzicki_elementi(self, value):
-        self._muzicki_elementi = value
+        self.muzicki_elementi = value
