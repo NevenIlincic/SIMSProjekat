@@ -1,20 +1,11 @@
 from Model.Models.MuzickiElement import MuzickiElement
 
 class EditorsReviewDTO:
-    def __init__(self, id : int, opis: str, ocena: int, menja_se: bool, muzicki_element: MuzickiElement):
-        self._id = id
+    def __init__(self, opis: str, ocena: int, muzicki_element: MuzickiElement):
         self._opis = opis
         self._ocena = ocena
-        self._menja_se = menja_se
         self._muzicki_element = muzicki_element
-
-    @property
-    def id(self):
-        return self._id
-
-    @id.setter
-    def id(self, value):
-        self._id = value
+        
 
     @property
     def opis(self):
@@ -31,14 +22,6 @@ class EditorsReviewDTO:
     @ocena.setter
     def ocena(self, value):
         self._ocena = value
-
-    @property
-    def menja_se(self):
-        return self._menja_se
-
-    @menja_se.setter
-    def menja_se(self, value):
-        self._menja_se = value
 
     @property
     def muzicki_element(self):

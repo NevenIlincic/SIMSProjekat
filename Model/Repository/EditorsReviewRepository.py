@@ -1,12 +1,19 @@
 from Model.Models.MuzickiElement import MuzickiElement
 from Model.Observer.Subject import Subject
 from Model.Models.RecenzijaUrednika import RecenzijaUrednika
-from Model.Repository.MusicalElementRepository import MusicalElementRepository
+from Model.Repository.AlbumRepository import AlbumRepository
+from Model.Repository.GroupRepository import GroupRepository
+from Model.Repository.MusicalPieceRepository import MusicalPieceRepository
+from Model.Repository.ParticipantRepository import ParticipantRepository
+
 class EditorsReviewRepository():
     def __init__(self) -> None:
         self.elements = []
         self.path = "Data/EditorsReview.txt"
-        self.__musical_element_repository = MusicalElementRepository()
+        self.__music_piece_repository = MusicalPieceRepository()
+        self.__participant_repository = ParticipantRepository()
+        self.__group_repository = GroupRepository()
+        self.__album_repository = AlbumRepository()
         self.subject = Subject()
         self.load()
 
@@ -27,20 +34,27 @@ class EditorsReviewRepository():
     def assign_from_list(self, parameters):
         if parameters[0] == "":
             return None
-        muzicki_element_id = parameters[4]
-        muzicki_element = self.__musical_element_repository.get_by_id(int(muzicki_element_id))
        
         b = False
         if parameters[3] == "False":
             b = False
         else:
             b = bool(parameters[3])
+        muzicki_element = None
+        if parameters[5] == "Muzicko delo":
+            muzicki_element = self.__music_piece_repository.get_by_id(int(parameters[4]))
+        elif parameters[5] == "Izvodjac":
+            muzicki_element = self.__participant_repository.get_by_id(int(parameters[4]))
+        elif parameters[5] == "Grupa":
+            muzicki_element = self.__group_repository.get_by_id(int(parameters[4]))
+        else:
+            muzicki_element = self.__album_repository.get_by_id(int(parameters[4]))
 
-        return RecenzijaUrednika(int(parameters[0]), parameters[1] ,int(parameters[2]), b, muzicki_element)
+        return RecenzijaUrednika(int(parameters[0]), parameters[1] ,int(parameters[2]), b, muzicki_element, parameters[5])
     
 
     def convert_to_list(self, entity: RecenzijaUrednika):
-        return [str(entity.id),entity.opis,str(entity.ocena), str(entity.menja_se), str(entity.muzickiElement.id)]
+        return [str(entity.id),entity.opis,str(entity.ocena), str(entity.menja_se), str(entity.muzickiElement.id), entity.vrsta_elementa]
      
 
     def save(self):

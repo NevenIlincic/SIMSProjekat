@@ -1,13 +1,14 @@
 from Model.Models.Album import Album
 from Model.Models.MuzickoDelo import MuzickoDelo
 from Model.Observer.Subject import Subject
+from Model.Repository.MusicalPieceRepository import MusicalPieceRepository
 
 class AlbumRepository():
-    def __init__(self, musical_piece_repository) -> None:
+    def __init__(self) -> None:
         self.albums = []
         self.path = "Data/Albums.txt"
         self.subject = Subject()
-        self.musical_piece_repository = musical_piece_repository
+        self.__musical_piece_repository = MusicalPieceRepository()
         self.load()
 
     def load(self):
@@ -26,7 +27,7 @@ class AlbumRepository():
         if parameters[0] == "":
             return None
         muzicka_dela_ids = parameters[5].split("|")
-        muzicka_dela = [self.musical_piece_repository.get_by_id(int(md_id)) for md_id in muzicka_dela_ids]
+        muzicka_dela = [self.__musical_piece_repository.get_by_id(int(md_id)) for md_id in muzicka_dela_ids]
         return Album(
             int(parameters[0]),   # id
             parameters[1],        # naziv
@@ -85,5 +86,11 @@ class AlbumRepository():
     def get_by_naziv(self, naziv):
         for album in self.albums:
             if album.naziv == naziv:
+                return album
+        return None
+    
+    def get_by_id(self, id):
+        for album in self.albums:
+            if album.id == id:
                 return album
         return None

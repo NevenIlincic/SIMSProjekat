@@ -1,13 +1,13 @@
 from Model.Models.MuzickoDelo import MuzickoDelo
 from Model.Models.Grupa import Grupa
 from Model.Observer.Subject import Subject
-
+from Model.Repository.GroupRepository import GroupRepository
 class MusicalPieceRepository():
-    def __init__(self, group_repository) -> None:
+    def __init__(self) -> None:
         self.pieces = []
         self.path = "Data/MusicalPieces.txt"
         self.subject = Subject()
-        self.group_repository = group_repository
+        self.__group_repository = GroupRepository()
         self.load()
 
     def load(self):
@@ -26,7 +26,7 @@ class MusicalPieceRepository():
     def assign_from_list(self, parameters):
         if parameters[0] == "":
             return None
-        grupa = self.group_repository.get_by_id(int(parameters[7]))
+        grupa = self.__group_repository.get_by_id(int(parameters[7]))
         return MuzickoDelo(
             int(parameters[0]),  # id
             parameters[1],       # naziv
