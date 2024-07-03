@@ -9,27 +9,26 @@ class MuzickiUrednik(Korisnik):
         self.zadaci = zadaci
         self.recenzije = recenzije
     
-    def dodaj_izvodjaca(self, izvodjac):
-        pass
+    @property
+    def id(self):
+        return self._id
 
-    def dodaj_muzicko_delo(self, delo):
-        pass
+    @id.setter
+    def id(self, value):
+        self._id = value
 
-    def dodaj_dogadjaj(self, izvodjenje):
-        pass
+    @property
+    def zadaci(self):
+        return self._zadaci
 
-    def dodaj_album(self, album):
-        pass
+    @zadaci.setter
+    def zadaci(self, value):
+        self._zadaci = value
 
-    def dodaj_grupu(self, grupa):
-        pass
-
-    def dodaj_recenziju(self, recenzija):
-        pass
-
-    def pregledaj_zadatke(self):
-        pass
-
-    def izmena_stranice(self, je_dozvoljena: bool):
-        pass
-
+    @property
+    def recenzije(self):
+        return self._recenzije
+    
+    @recenzije.setter
+    def recenzije(self, value):
+        self._recenzije = value

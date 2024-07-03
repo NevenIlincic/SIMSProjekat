@@ -1,4 +1,5 @@
-from Model.Models.MuzickiElement import MuzickiElement, VrstaIzvodjenja
+from Model.Models.MuzickiElement import MuzickiElement
+from Model.Models.Enumerations import VrstaIzvodjenja
 
 class Izvodjenje(MuzickiElement):
     def __init__(self, id: int, naziv: str, slika: str, pregledi: int, broj_ocena: int, zbir_ocena: int, mesto: str, vreme: str, link: str, vrsta_izvodjenja: VrstaIzvodjenja, muzicka_dela : list):

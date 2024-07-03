@@ -1,11 +1,20 @@
 class MusicalElementDTO:
-    def __init__(self,naziv: str, slika: str, pregledi: int, broj_ocena: int, zbir_ocena: int):
+    def __init__(self, id: int, naziv: str, slika: str, pregledi: int, broj_ocena: int, zbir_ocena: int):
+        self._id = id
         self._naziv = naziv
         self._slika = slika
         self._pregledi = pregledi
         self._broj_ocena = broj_ocena
         self._zbir_ocena = zbir_ocena
     
+    @property
+    def id(self):
+        return self._id
+
+    @id.setter
+    def id(self, value):
+        self._id = value
+
     @property
     def naziv(self):
         return self._naziv

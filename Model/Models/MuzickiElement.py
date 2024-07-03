@@ -5,7 +5,7 @@ class MuzickiElement:
         self.slika = slika
         self.pregledi = pregledi
         self.broj_ocena = broj_ocena
-        self.zbir_ocena = zbir_ocena
+        self.zbir_ocena = zbir_ocena     
 
     @property
     def id(self):

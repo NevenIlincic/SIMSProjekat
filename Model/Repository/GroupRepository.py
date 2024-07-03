@@ -1,13 +1,13 @@
 from Model.Models.Grupa import Grupa
 from Model.Models.Ucesnik import Ucesnik
 from Model.Observer.Subject import Subject
-
+from Model.Repository.ParticipantRepository import ParticipantRepository
 class GroupRepository():
-    def __init__(self, participant_repository) -> None:
+    def __init__(self) -> None:
         self.groups = []
         self.path = "Data/Groups.txt"
         self.subject = Subject()
-        self.participant_repository = participant_repository
+        self.__participant_repository = ParticipantRepository()
         self.load()
 
     def load(self):
@@ -28,7 +28,7 @@ class GroupRepository():
         ucesnici = []
         if parameters[6] != "":
             ucesnici_ids = parameters[6].split("|")
-            ucesnici = [self.participant_repository.get_by_id(int(u_id)) for u_id in ucesnici_ids]
+            ucesnici = [self.__participant_repository.get_by_id(int(u_id)) for u_id in ucesnici_ids]
         return Grupa(
             int(parameters[0]),    # id
             parameters[1],         # naziv
