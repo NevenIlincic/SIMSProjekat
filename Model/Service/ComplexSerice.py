@@ -12,6 +12,7 @@ class ComplexService():
         self.registered_account_controller = RegisteredUserController()
         self.supervisor_controller = MusicSupervisorController()
         self.participant_controller = ParticipantController()
+        self.administrator_controller = AdministratorController()
     
     def account_login(self, username, password, role: str):
         all_accounts = self.user_account_controller.get_all_accounts()
@@ -79,4 +80,4 @@ class ComplexService():
         self.supervisor_controller.add_supervisor(user_dto)
 
     def add_new_participant(self, participant_dto): 
-                self.participant_controller.add_participant(participant_dto) 
+        self.participant_controller.add_participant(participant_dto) 

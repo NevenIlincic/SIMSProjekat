@@ -1,12 +1,12 @@
 from Model.Models.MuzickiElement import MuzickiElement
 from Model.Observer.Subject import Subject
 from Model.Models import RecenzijaUrednika
-
+from Model.Repository.MusicalElementRepository import MusicalElementRepository
 class EditorsReviewRepository():
-    def __init__(self, musical_element_repository) -> None:
+    def __init__(self) -> None:
         self.elements = []
         self.path = "Data/EditorsReview.txt"
-        self.musical_element_repository = musical_element_repository
+        self.__musical_element_repository = MusicalElementRepository()
         self.subject = Subject()
         self.load()
 
@@ -28,7 +28,7 @@ class EditorsReviewRepository():
         if parameters[0] == "":
             return None
         muzicki_element_id = parameters[4]
-        muzicki_element = self.musical_element_repository.get_by_id(int(muzicki_element_id))
+        muzicki_element = self.__musical_element_repository.get_by_id(int(muzicki_element_id))
        
         b = False
         if parameters[3] == "False":

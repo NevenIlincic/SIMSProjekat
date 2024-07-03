@@ -3,12 +3,14 @@ from Model.Models.MuzickiUrednik import MuzickiUrednik
 from Model.Models.NeregistrovaniKorisnik import NeregistrovaniKorisnik
 from Model.Models.Enumerations import Pol
 from Model.Repository.UserAccountRepository import UserAccountRepository
+from Model.Repository.EditorsReviewRepository import EditorsReviewRepository
 
 class MusicSupervisorRepository(NeregistrovaniKorisnik):
     def __init__(self) -> None:
         self.subject = Subject()
         self.supervisors = []
         self.__user_account_repository = UserAccountRepository()
+        self.__editors_review_repository = EditorsReviewRepository()
         self.path = "Data/MusicSupervisors.txt"
         self.load()
 
@@ -39,31 +41,17 @@ class MusicSupervisorRepository(NeregistrovaniKorisnik):
             #task = self.__task_repository.get_by_id(int(id_str))
             #tasks.append(task)
         reviews = []
-        #for id_str in parameters[6].split("-"):
-            #review = self.__review_repository.get_by_id(int(id_str))
-            #reviews.append(review)
+        if parameters[6] != "":
+            for id_str in parameters[6].split("-"):
+                review = self.__editors_review_repository.get_by_id(int(id_str))
+                reviews.append(review)
         
         return MuzickiUrednik(int(parameters[0]), parameters[1], parameters[2], Pol(parameters[3]), 
-                              blocked, [parameters[5]], [parameters[6]], user_account)
+                              blocked, [parameters[5]], reviews, user_account)
 
     def convert_to_list(self, entity: MuzickiUrednik):
-        tasks = []
-        for task in entity.zadaci:
-            if task == "null":
-                tasks = "null"
-                break
-            tasks.append(str(task.id))
-        #tasks_str = "-".join(tasks)
-
-        reviews = []
-        for review in entity.recenzije:
-            if review == "null":
-                reviews = "null"
-                break
-            reviews.append(str(review.id))
-
-        #reviews_str = "-".join(reviews)
-
+        tasks = ",".join(entity.zadaci)
+        reviews = ",".join(entity.recenzije)
         return [str(entity.id), entity.ime, entity.prezime, entity.pol.value, str(entity.blokiran), tasks, reviews, str(entity.korisnicki_nalog.id)]
     
 
