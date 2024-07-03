@@ -1,6 +1,7 @@
 from Model.Models.Ucesnik import Ucesnik
-from Model.Models.Enumerations import Pol
+from Model.Models.Enumerations import Pol, Zanr
 from Model.Observer.Subject import Subject
+from datetime import datetime, date
 
 class ParticipantRepository():
     def __init__(self) -> None:
@@ -25,6 +26,7 @@ class ParticipantRepository():
     def assign_from_list(self, parameters):
         if parameters[0] == "":
             return None
+        enum_list = [Zanr[string_value] for string_value in parameters[11].split("|")]
         return Ucesnik(
             int(parameters[0]),  # id
             parameters[1],       # naziv
@@ -35,13 +37,14 @@ class ParticipantRepository():
             parameters[6],       # ime
             parameters[7],       # prezime
             Pol[parameters[8]],  # pol (assuming Pol is an enum)
-            parameters[9],       # datum_rodjenja
+            datetime.strptime(parameters[9], '%Y-%m-%d').date(),       # datum_rodjenja
             parameters[10],      # biografija
-            parameters[11].split("|"),  # zanrovi (assuming genres are separated by '|')
+            enum_list,  # zanrovi (assuming genres are separated by '|')
             parameters[12] == "True"  # reklamira_se
         )
     
     def convert_to_list(self, entity: Ucesnik):
+        string_list = [member.value for member in entity.zanrovi]
         return [
             str(entity.id), 
             entity.naziv, 
@@ -52,9 +55,9 @@ class ParticipantRepository():
             entity.ime, 
             entity.prezime, 
             entity.pol.name,  # assuming Pol is an enum
-            entity.datum_rodjenja, 
+            entity.datum_rodjenja.strftime('%Y-%m-%d'), 
             entity.biografija, 
-            "|".join(entity.zanrovi),  # join genres with '|'
+            "|".join(string_list),  # join genres with '|'
             str(entity.reklamira_se)
         ]
     

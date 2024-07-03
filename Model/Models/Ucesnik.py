@@ -1,8 +1,9 @@
 from Model.Models.MuzickiElement import MuzickiElement
 from Model.Models.Enumerations import Pol
+from datetime import date
 
 class Ucesnik(MuzickiElement):
-    def __init__(self, id: int, naziv: str, slika: str, pregledi: int, broj_ocena: int, zbir_ocena: int, ime: str, prezime: str, pol: Pol, datum_rodjenja: str, biografija: str, zanrovi: list[str], reklamira_se: bool):
+    def __init__(self, id: int, naziv: str, slika: str, pregledi: int, broj_ocena: int, zbir_ocena: int, ime: str, prezime: str, pol: Pol, datum_rodjenja: date, biografija: str, zanrovi: list[str], reklamira_se: bool):
         super().__init__(id, naziv, slika, pregledi, broj_ocena, zbir_ocena)
         self.ime = ime
         self.prezime = prezime
