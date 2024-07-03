@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1088</width>
-    <height>738</height>
+    <height>720</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -57,9 +57,6 @@
      </rect>
     </property>
     <property name="text">
-     <string/>
-    </property>
-    <property name="placeholderText">
      <string>Search...</string>
     </property>
    </widget>
@@ -95,7 +92,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>530</y>
+      <y>520</y>
       <width>741</width>
       <height>31</height>
      </rect>
@@ -167,7 +164,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>340</y>
+      <y>330</y>
       <width>741</width>
       <height>31</height>
      </rect>
@@ -185,7 +182,7 @@
     <property name="geometry">
      <rect>
       <x>830</x>
-      <y>430</y>
+      <y>410</y>
       <width>261</width>
       <height>41</height>
      </rect>
@@ -208,7 +205,7 @@
     <property name="geometry">
      <rect>
       <x>840</x>
-      <y>470</y>
+      <y>450</y>
       <width>241</width>
       <height>41</height>
      </rect>
@@ -269,7 +266,7 @@
     <property name="geometry">
      <rect>
       <x>840</x>
-      <y>520</y>
+      <y>500</y>
       <width>241</width>
       <height>41</height>
      </rect>
@@ -330,7 +327,7 @@
     <property name="geometry">
      <rect>
       <x>840</x>
-      <y>570</y>
+      <y>550</y>
       <width>241</width>
       <height>41</height>
      </rect>
@@ -391,7 +388,7 @@
     <property name="geometry">
      <rect>
       <x>840</x>
-      <y>620</y>
+      <y>600</y>
       <width>241</width>
       <height>41</height>
      </rect>
@@ -452,7 +449,7 @@
     <property name="geometry">
      <rect>
       <x>840</x>
-      <y>670</y>
+      <y>650</y>
       <width>241</width>
       <height>41</height>
      </rect>
@@ -508,138 +505,6 @@
     <property name="flat">
      <bool>false</bool>
     </property>
-   </widget>
-   <widget class="QScrollArea" name="song_scrollArea">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>190</y>
-      <width>801</width>
-      <height>141</height>
-     </rect>
-    </property>
-    <property name="widgetResizable">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="scrollAreaWidgetContents">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>799</width>
-       <height>139</height>
-      </rect>
-     </property>
-     <widget class="QWidget" name="song_widget" native="true">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>791</width>
-        <height>141</height>
-       </rect>
-      </property>
-      <widget class="QWidget" name="horizontalLayoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>801</width>
-         <height>141</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="song_layout"/>
-      </widget>
-     </widget>
-    </widget>
-   </widget>
-   <widget class="QScrollArea" name="artist_scrollArea">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>380</y>
-      <width>801</width>
-      <height>141</height>
-     </rect>
-    </property>
-    <property name="widgetResizable">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="scrollAreaWidgetContents_2">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>799</width>
-       <height>139</height>
-      </rect>
-     </property>
-     <widget class="QWidget" name="artist_widget" native="true">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>791</width>
-        <height>141</height>
-       </rect>
-      </property>
-      <widget class="QWidget" name="horizontalLayoutWidget_4">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>801</width>
-         <height>141</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="artist_layout_2"/>
-      </widget>
-     </widget>
-    </widget>
-   </widget>
-   <widget class="QScrollArea" name="album_scrollArea">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>570</y>
-      <width>801</width>
-      <height>141</height>
-     </rect>
-    </property>
-    <property name="widgetResizable">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="scrollAreaWidgetContents_3">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>799</width>
-       <height>139</height>
-      </rect>
-     </property>
-     <widget class="QWidget" name="album_widget" native="true">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>791</width>
-        <height>141</height>
-       </rect>
-      </property>
-      <widget class="QWidget" name="horizontalLayoutWidget_5">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>801</width>
-         <height>141</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="album_layout"/>
-      </widget>
-     </widget>
-    </widget>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
