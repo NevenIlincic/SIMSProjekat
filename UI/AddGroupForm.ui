@@ -106,21 +106,11 @@
      <string>Add</string>
     </property>
    </widget>
-   <widget class="QListWidget" name="participantList">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>230</y>
-      <width>311</width>
-      <height>91</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QPushButton" name="addParticipantButton">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>280</y>
+      <y>300</y>
       <width>141</width>
       <height>31</height>
      </rect>
@@ -138,7 +128,7 @@
    <widget class="QLineEdit" name="participantFirstName">
     <property name="geometry">
      <rect>
-      <x>60</x>
+      <x>210</x>
       <y>180</y>
       <width>181</width>
       <height>31</height>
@@ -166,7 +156,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>230</y>
+      <y>250</y>
       <width>141</width>
       <height>31</height>
      </rect>
@@ -202,7 +192,7 @@
    <widget class="QLineEdit" name="participantLastName">
     <property name="geometry">
      <rect>
-      <x>320</x>
+      <x>400</x>
       <y>180</y>
       <width>181</width>
       <height>31</height>
@@ -224,6 +214,43 @@
     </property>
     <property name="clearButtonEnabled">
      <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="participantPseudonym">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>180</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>MS Reference Sans Serif</family>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="placeholderText">
+     <string>Participant pseudonym</string>
+    </property>
+    <property name="clearButtonEnabled">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listView">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>250</y>
+      <width>256</width>
+      <height>91</height>
+     </rect>
     </property>
    </widget>
   </widget>

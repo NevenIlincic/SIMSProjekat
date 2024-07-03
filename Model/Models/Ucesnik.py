@@ -12,3 +12,59 @@ class Ucesnik(MuzickiElement):
         self.biografija = biografija
         self.zanrovi = zanrovi
         self.reklamira_se = reklamira_se
+        
+    @property
+    def ime(self):
+        return self._ime
+
+    @ime.setter
+    def ime(self, value):
+        self._ime = value
+
+    @property
+    def prezime(self):
+        return self._prezime
+
+    @prezime.setter
+    def prezime(self, value):
+        self._prezime = value
+
+    @property
+    def pol(self):
+        return self._pol
+
+    @pol.setter
+    def pol(self, value):
+        self._pol = value
+
+    @property
+    def datum_rodjenja(self):
+        return self._datum_rodjenja
+
+    @datum_rodjenja.setter
+    def datum_rodjenja(self, value):
+        self._datum_rodjenja = value
+
+    @property
+    def biografija(self):
+        return self._biografija
+
+    @biografija.setter
+    def biografija(self, value):
+        self._biografija = value
+
+    @property
+    def zanrovi(self):
+        return self._zanrovi
+
+    @zanrovi.setter
+    def zanrovi(self, value):
+        self._zanrovi = value
+
+    @property
+    def reklamira_se(self):
+        return self._reklamira_se
+
+    @reklamira_se.setter
+    def reklamira_se(self, value):
+        self._reklamira_se = value

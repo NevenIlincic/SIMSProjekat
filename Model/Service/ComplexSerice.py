@@ -83,3 +83,4 @@ class ComplexService():
 
     def add_new_participant(self, participant_dto): 
         self.participant_controller.add_participant(participant_dto) 
+    

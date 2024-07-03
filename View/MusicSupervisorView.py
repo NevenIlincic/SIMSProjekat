@@ -32,6 +32,7 @@ class MusicSupervisorWindow(QMainWindow,  Ui_MainWindow):
         self.pushButton.clicked.connect(self.logout)
         self.participant_button.clicked.connect(self.add_participant)
         self.piece_button.clicked.connect(self.add_musical_piece)
+        self.group_button.clicked.connect(self.add_group)
 
     def show_informations(self):
         self.title_label.setText("Welcome back, "+self.supervisor_dto.ime+" "+self.supervisor_dto.prezime+"!")
