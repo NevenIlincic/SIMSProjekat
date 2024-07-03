@@ -30,3 +30,7 @@ class MusicSupervisorWindow(QMainWindow,  Ui_MainWindow):
     def add_participant(self):
         self.add_participant_window = AddParticipantWindow()
         self.add_participant_window.show()
+
+    # def add_musical_piece(self):
+    #     self.add_musical_piece_window = AddMusicalPieceWindow()
+    #     self.add_musical_piece_window.show()
