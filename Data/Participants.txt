@@ -1,0 +1,2 @@
+1,MC Djomlaz,https://charts-static.billboard.com/img/2017/04/lil-pump-9tf-344x344.jpg,0,0,0,Mladen,Petric,Muski,2004-03-10,New and rising artist.,Pop,False
+2,Michael Jackson,image.com,0,0,0,Michael,Jackson,Muski,1958-01-01,The king of pop.,Pop,False
