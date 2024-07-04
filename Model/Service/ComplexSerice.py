@@ -1,8 +1,12 @@
+from Controller.AlbumController import AlbumController
 from Controller.EditorsReviewController import EditorsReviewController
 from Controller.GroupController import GroupController
 from Controller.MusicalPieceController import MusicalPieceController
 from Controller.UserAccountController import UserAccountController
 from Controller.RegisteredUserController import RegisteredUserController
+from Model.DTO.EditorsReviewDTO import EditorsReviewDTO
+from Model.DTO.AlbumFormDTO import AlbumFormDTO
+
 from Model.DTO.GroupFormDTO import GroupFormDTO
 from Model.DTO.UserInformationsDTO import UserInformationsDTO
 from Controller.MusicSupervisorController import MusicSupervisorController
@@ -11,6 +15,7 @@ from Controller.AdministratorController import AdministratorController
 from Controller.ParticipantController import ParticipantController
 from Controller.MusicalElementController import MusicalElementController
 from Controller.ListoOfFavouritesController import ListOfFavouritesController
+from Model.Models.MuzickiElement import MuzickiElement
 
 class ComplexService():
     def __init__(self) -> None:
@@ -85,6 +90,35 @@ class ComplexService():
             return ("Group has to have name!", False)
         return ("",True)
 
+    def validate_data_for_album_adding(self, album_form_dto: AlbumFormDTO):
+        if self.album_controller.get_by_naziv(album_form_dto.album_name):
+            return ("Album with that name already exists!", False)
+        if album_form_dto.album_name == "":
+            return ("Album has to have name!", False)
+        if len(album_form_dto.musical_pieces) == 0:
+            return ("Album has to have at least one piece!", False)
+        return ("", True)
+
+    def validate_data_for_review_adding(self, review_dto: EditorsReviewDTO):
+        if review_dto.opis == "":
+            return ("You need to add description!", False)
+        return("", True)
+    
+    def check_for_user_review(self, user_informations_dto: UserInformationsDTO, element: MuzickiElement):
+        accounts = self.user_account_controller.get_all_accounts()
+        user_account = None
+        for acc in accounts:
+            if acc.korisnicko_ime == user_informations_dto.korisnicko_ime:
+                if acc.lozinka == user_informations_dto.lozinka:
+                    user_account = acc
+                    break
+        supervisor = self.supervisor_controller.find_supervisor_by_account(user_account.id)
+        if element in supervisor.recenzije:
+            return("", True)
+        else:
+            return("You already added review!", False)
+
+
     def register_new_user(self, user_dto, user_account_dto):  
         account = self.user_account_controller.add_account(user_account_dto)
         user_dto.korisnicki_nalog = account
@@ -100,3 +134,19 @@ class ComplexService():
     
     def add_new_group(self, group_dto):
         self.group_controller.add_group(group_dto)
+    
+    def add_new_album(self, album_dto):
+        self.album_controller.add_album(album_dto)
+
+    def add_review(self, editors_review_dto, user_informations_dto):
+        accounts = self.user_account_controller.get_all_accounts()
+        user_account = None
+        for acc in accounts:
+            if acc.korisnicko_ime == user_informations_dto.korisnicko_ime:
+                if acc.lozinka == user_informations_dto.lozinka:
+                    user_account = acc
+                    break
+        supervisor = self.supervisor_controller.find_supervisor_by_account(user_account.id)
+        review = self.editors_review_controller.add_review(editors_review_dto)
+        supervisor.recenzije.append(review)
+        self.supervisor_controller.update_supervisor(supervisor)

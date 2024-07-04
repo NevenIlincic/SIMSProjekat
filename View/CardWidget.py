@@ -1,5 +1,8 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow
+from Model.DTO.EditorsReviewDTO import EditorsReviewDTO
+from Model.DTO.UserInformationsDTO import UserInformationsDTO
+from View.AddReviewFormView import ReviewForm
 from View.GeneratedFiles.MusicSupervisorMenuGenerated import Ui_MainWindow
 from PyQt5.QtCore import pyqtSignal
 from Model.Models.MuzickiElement import MuzickiElement
@@ -12,14 +15,15 @@ from io import BytesIO
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QFrame, QSizePolicy
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import Qt, QEvent
-
+from PyQt5.QtWidgets import QMainWindow, QMessageBox, QScrollArea
 class CardWidget(QMainWindow,  Ui_CardWidget):
-    def __init__(self, element: MuzickiElement):
+    def __init__(self, element: MuzickiElement, user_informations_dto:UserInformationsDTO):
         super().__init__()
         self.setupUi(self)
-
+        self.user_informations_dto = user_informations_dto
         self.label.setText(element.naziv)
-        
+        self.element = element
+        self.complex_service = ComplexService()
         self.setStyleSheet("""
             QWidget {
                 background-color: #e6f7ff;  /* Light blue close to white */
@@ -40,7 +44,8 @@ class CardWidget(QMainWindow,  Ui_CardWidget):
         
         self.frame.setFrameShape(QFrame.Box)
         self.set_image_in_frame(self.frame, element.slika)
-
+        self.add_review_window = None
+        self.pushButton_2.clicked.connect(self.add_review)
         #Function call
 
     def set_image_in_frame(self, frame, image_url):
@@ -73,3 +78,13 @@ class CardWidget(QMainWindow,  Ui_CardWidget):
         if event.type() == QEvent.Resize and source is self.frame:
             self.resize_image()
         return super().eventFilter(source, event)
+    
+    def add_review(self):
+        
+        message, valid = self.complex_service.check_for_user_review(self.user_informations_dto, self.element)
+        if valid == False:
+            QMessageBox.information(self, "Message", message)
+        else:
+            review_dto = EditorsReviewDTO("", 0, self.element)
+            self.add_review_window = ReviewForm(review_dto, self.user_informations_dto)
+            self.add_review_window.show()

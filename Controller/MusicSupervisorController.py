@@ -14,15 +14,9 @@ class MusicSupervisorController():
         return new_supervisor
         
 
-    # def login(self, name, last_name):
-    #     supervisors = self.get_all_supervisors()
-    #     for supervisor in supervisors:
-    #         if supervisor.ime == name:
-    #             if supervisor.prezime == last_name:
-    #                 return supervisor
-    #             return False
-    #     return False
-    
+    def update_supervisor(self, supervisor: MuzickiUrednik):
+        return self.musicSupervisorRepository.update_supervisor(supervisor)
+
     def get_all_supervisors(self):
         return self.musicSupervisorRepository.get_all_supervisors()
     
