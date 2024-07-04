@@ -70,6 +70,18 @@ class RegisteredUsersRepository(NeregistrovaniKorisnik):
 
     def get_all_users(self):
         return self.users
+    
+    def get_by_id(self, id : int):
+        for user in self.users:
+            if user.id == id:
+                return user
+        return None
+    
+    def get_by_name(self, username : str):
+        for user in self.users:
+            if user.korisnicki_nalog.korisnicko_ime  == username:
+                return user
+        return None
 
     def dodaj_recenziju(self, recenzija ):
         pass

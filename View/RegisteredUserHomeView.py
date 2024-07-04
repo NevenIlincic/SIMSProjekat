@@ -15,6 +15,8 @@ from View.GeneratedFiles.RegisteredUserHomeWindowGenerated import Ui_MainWindow
 from Model.Service.ComplexSerice import ComplexService
 from Model.DTO.UserInformationsDTO import UserInformationsDTO
 from PyQt5.QtCore import pyqtSignal
+from View.ListOfFavourites import *
+from PyQt5.QtWidgets import QLabel, QPushButton
 
 
 class RegisteredUserHomeView(QMainWindow, Ui_MainWindow):
@@ -24,10 +26,38 @@ class RegisteredUserHomeView(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self) 
         self.user_dto = user_dto
+        self.complex = ComplexService()
+        self.list_controller = self.complex.list_controller
 
-        self.title_label.setText( "Welcome back, "+user_dto.ime+" "+user_dto.prezime+"!")
+        lists = self.list_controller.get_all_lists()
+        my_lists = []
+        for list in lists:
+            if list.korisnik.korisnicki_nalog.korisnicko_ime == user_dto.korisnicko_ime:
+                my_lists.append(list)
+
+        self.title_label.setText( "Welcome back, "+user_dto.ime+" "+user_dto.prezime+"!")   
+
+        for lista in my_lists:
+            label = QLabel(lista.naziv)
+            play_button = QPushButton("Play")
+            #play_button.clicked.connect(lambda checked, lista=lista: self.play_list(lista))
+
+            self.artist_layout_2.addWidget(label)
+            self.artist_layout_2.addWidget(play_button)
+
         self.pushButton.clicked.connect(self.logout)
+        self.pushButton_2.clicked.connect(self.make_list_window)
     
     def logout(self):
         self.logout_signal.emit()
         self.close()
+
+    def make_list_window(self):
+        self.make_music_list_window = ListOfFavourites(self.user_dto.korisnicko_ime)
+        self.make_music_list_window.cancel_signal.connect(self.handle_cancel)
+        self.make_music_list_window.show()
+        self.close()
+
+    def handle_cancel(self):
+        self.show()
+    
