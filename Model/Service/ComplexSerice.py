@@ -3,6 +3,7 @@ from Controller.GroupController import GroupController
 from Controller.MusicalPieceController import MusicalPieceController
 from Controller.UserAccountController import UserAccountController
 from Controller.RegisteredUserController import RegisteredUserController
+from Model.DTO.EditorsReviewDTO import EditorsReviewDTO
 from Model.DTO.GroupFormDTO import GroupFormDTO
 from Model.DTO.UserInformationsDTO import UserInformationsDTO
 from Controller.MusicSupervisorController import MusicSupervisorController
@@ -18,6 +19,7 @@ class ComplexService():
         self.participant_controller = ParticipantController()
         self.administrator_controller = AdministratorController()
         self.group_controller = GroupController()
+        self.editors_review_controller = EditorsReviewController()
         
     def account_login(self, username, password, role: str):
         all_accounts = self.user_account_controller.get_all_accounts()
@@ -81,6 +83,11 @@ class ComplexService():
             return ("Group has to have name!", False)
         return ("",True)
 
+    def validate_data_for_review_adding(self, review_dto: EditorsReviewDTO):
+        if review_dto.opis == "":
+            return ("You need to add description!", False)
+        return("", True)
+    
     def register_new_user(self, user_dto, user_account_dto):  
         account = self.user_account_controller.add_account(user_account_dto)
         user_dto.korisnicki_nalog = account

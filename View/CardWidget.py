@@ -1,5 +1,7 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow
+from Model.DTO.EditorsReviewDTO import EditorsReviewDTO
+from View.AddReviewFormView import ReviewForm
 from View.GeneratedFiles.MusicSupervisorMenuGenerated import Ui_MainWindow
 from PyQt5.QtCore import pyqtSignal
 from Model.Models.MuzickiElement import MuzickiElement
@@ -19,7 +21,7 @@ class CardWidget(QMainWindow,  Ui_CardWidget):
         self.setupUi(self)
 
         self.label.setText(element.naziv)
-        
+        self.element = element
         self.setStyleSheet("""
             QWidget {
                 background-color: #e6f7ff;  /* Light blue close to white */
@@ -40,7 +42,8 @@ class CardWidget(QMainWindow,  Ui_CardWidget):
         
         self.frame.setFrameShape(QFrame.Box)
         self.set_image_in_frame(self.frame, element.slika)
-
+        self.add_review_window = None
+        self.pushButton_2.clicked.connect(self.add_review)
         #Function call
 
     def set_image_in_frame(self, frame, image_url):
@@ -73,3 +76,8 @@ class CardWidget(QMainWindow,  Ui_CardWidget):
         if event.type() == QEvent.Resize and source is self.frame:
             self.resize_image()
         return super().eventFilter(source, event)
+    
+    def add_review(self):
+        review_dto = EditorsReviewDTO("", 0, self.element)
+        self.add_review_window = ReviewForm(review_dto)
+        self.add_review_window.show()

@@ -256,7 +256,7 @@ class Ui_MainWindow(object):
         self.piece_button.setText(_translate("MainWindow", "Musical piece"))
         self.album_button.setText(_translate("MainWindow", "Album"))
         self.concert_button.setText(_translate("MainWindow", "Concert"))
-
+        
 
 if __name__ == "__main__":
     import sys
