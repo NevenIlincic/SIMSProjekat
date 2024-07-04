@@ -78,6 +78,19 @@ class MusicSupervisorRepository(NeregistrovaniKorisnik):
         self.save()
         self.subject.notify_observers()
 
+    def get_supervisor_by_id(self, id):
+        for supervisor in self.supervisors:
+            if supervisor.id == id:
+                return supervisor
+        return None
+    
+    def update_supervisor(self, supervisor: MuzickiUrednik):
+        supervisor_to_update = self.get_supervisor_by_id(supervisor.id)
+        index = self.supervisors.index(supervisor_to_update)
+        self.supervisors[index] = supervisor
+        self.save()
+        self.subject.notify_observers()
+        
     def get_all_supervisors(self):
         return self.supervisors
 

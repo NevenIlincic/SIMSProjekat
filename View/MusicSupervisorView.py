@@ -20,7 +20,7 @@ class MusicSupervisorWindow(QMainWindow,  Ui_MainWindow):
         participants = self.complex.participant_controller.get_all_participants()[:3]
 
         for participant in participants:
-            card = CardWidget(participant)
+            card = CardWidget(participant, dto)
             self.artist_layout_2.addWidget(card)
 
         self.add_participant_window = None

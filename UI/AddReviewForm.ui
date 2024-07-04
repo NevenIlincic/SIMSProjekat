@@ -50,7 +50,7 @@
      <string>Opis</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="gradeComboBox">
+   <widget class="QComboBox" name="grade_combo_box">
     <property name="geometry">
      <rect>
       <x>240</x>
