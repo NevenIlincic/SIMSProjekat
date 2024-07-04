@@ -6,3 +6,19 @@ class MuzickoDelo(MuzickiElement):
         super().__init__(id, naziv, slika, pregledi, broj_ocena, zbir_ocena)
         self.tekst = tekst
         self.grupa = grupa
+
+    @property
+    def tekst(self):
+        return self._tekst
+
+    @tekst.setter
+    def tekst(self, value):
+        self._tekst = value
+
+    @property
+    def grupa(self):
+        return self._grupa
+
+    @grupa.setter
+    def grupa(self, value):
+        self._grupa = value

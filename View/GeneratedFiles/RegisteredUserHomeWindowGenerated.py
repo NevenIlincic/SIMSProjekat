@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1090, 737)
+        MainWindow.resize(1098, 1222)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
@@ -75,6 +75,19 @@ class Ui_MainWindow(object):
         self.line.setFrameShape(QtWidgets.QFrame.VLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
+        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_2.setGeometry(QtCore.QRect(860, 660, 201, 41))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.pushButton_2.setFont(font)
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.horizontalLayoutWidget_4 = QtWidgets.QWidget(self.centralwidget)
+        self.horizontalLayoutWidget_4.setGeometry(QtCore.QRect(850, 140, 241, 481))
+        self.horizontalLayoutWidget_4.setObjectName("horizontalLayoutWidget_4")
+        self.artist_layout_2 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_4)
+        self.artist_layout_2.setContentsMargins(2, 5, 2, 5)
+        self.artist_layout_2.setSpacing(6)
+        self.artist_layout_2.setObjectName("artist_layout_2")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -94,6 +107,7 @@ class Ui_MainWindow(object):
         self.songs_label.setText(_translate("MainWindow", "Songs for you"))
         self.artists_label.setText(_translate("MainWindow", "Suggested artists"))
         self.albus_label.setText(_translate("MainWindow", "Popular albums"))
+        self.pushButton_2.setText(_translate("MainWindow", "Make a music list"))
 
 
 if __name__ == "__main__":

@@ -54,8 +54,15 @@ class MusicSupervisorRepository(NeregistrovaniKorisnik):
                               blocked, tasks, reviews, user_account)
 
     def convert_to_list(self, entity: MuzickiUrednik):
-        tasks = ",".join(entity.zadaci)
-        reviews = ",".join(entity.recenzije)
+        reviews_id = []
+        tasks_id = []
+        for review in entity.recenzije:
+            reviews_id.append(str(review.id))
+        for task in entity.zadaci:
+            tasks_id.append(str(task.id))
+
+        tasks = "-".join(tasks_id)
+        reviews = "-".join(reviews_id)
         return [str(entity.id), entity.ime, entity.prezime, entity.pol.value, str(entity.blokiran), tasks, reviews, str(entity.korisnicki_nalog.id)]
     
 
@@ -78,6 +85,20 @@ class MusicSupervisorRepository(NeregistrovaniKorisnik):
         self.save()
         self.subject.notify_observers()
 
+    def get_supervisor_by_id(self, id):
+        for supervisor in self.supervisors:
+            if supervisor.id == id:
+                return supervisor
+        return None
+    
+    def update_supervisor(self, supervisor: MuzickiUrednik):
+        supervisor_to_update = self.get_supervisor_by_id(supervisor.id)
+        index = self.supervisors.index(supervisor_to_update)
+        supervisor_to_update.recenzije = supervisor.recenzije
+        self.supervisors[index] = supervisor_to_update
+        self.save()
+        self.subject.notify_observers()
+        
     def get_all_supervisors(self):
         return self.supervisors
 

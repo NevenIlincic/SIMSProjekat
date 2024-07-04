@@ -1,5 +1,8 @@
 from View.ParticipantSupervisorView import ParticipantSupervisorWindow
 from PyQt5.QtWidgets import QMainWindow
+from Model.DTO.EditorsReviewDTO import EditorsReviewDTO
+from Model.DTO.UserInformationsDTO import UserInformationsDTO
+from View.AddReviewFormView import ReviewForm
 from View.GeneratedFiles.MusicSupervisorMenuGenerated import Ui_MainWindow
 from Model.Models.Ucesnik import Ucesnik
 from Model.Models.MuzickiElement import MuzickiElement
@@ -12,15 +15,18 @@ from io import BytesIO
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QFrame, QSizePolicy
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import Qt, QEvent
-
+from PyQt5.QtWidgets import QMainWindow, QMessageBox, QScrollArea
 class CardWidget(QMainWindow,  Ui_CardWidget):
-    def __init__(self, element: MuzickiElement):
+    update_signal = pyqtSignal()
+    def __init__(self, element: MuzickiElement, user_informations_dto:UserInformationsDTO):
         super().__init__()
         self.setupUi(self)
         self.element = element
         self.view_window = None
+        self.user_informations_dto = user_informations_dto
         self.label.setText(element.naziv)
-        
+        self.element = element
+        self.complex_service = ComplexService()
         self.setStyleSheet("""
             QWidget {
                 background-color: #e6f7ff;  /* Light blue close to white */
@@ -41,7 +47,8 @@ class CardWidget(QMainWindow,  Ui_CardWidget):
         
         self.frame.setFrameShape(QFrame.Box)
         self.set_image_in_frame(self.frame, element.slika)
-
+        self.add_review_window = None
+        self.pushButton_2.clicked.connect(self.add_review)
         #Function call
         self.pushButton.clicked.connect(self.view_element)
 
@@ -80,3 +87,16 @@ class CardWidget(QMainWindow,  Ui_CardWidget):
         if isinstance(self.element, Ucesnik):
             self.view_window = ParticipantSupervisorWindow(self.element)
             self.view_window.show()
+    def add_review(self):  
+        message, valid = self.complex_service.check_for_user_review(self.user_informations_dto, self.element)
+        if valid == False:
+            QMessageBox.information(self, "Message", message)
+        else:
+            review_dto = EditorsReviewDTO("", 0, self.element)
+            self.add_review_window = ReviewForm(review_dto, self.user_informations_dto)
+            self.add_review_window.update_signal.connect(self.update_main)
+            self.add_review_window.show()
+
+    def update_main(self):
+        self.complex_service = ComplexService()
+        self.update_signal.emit()

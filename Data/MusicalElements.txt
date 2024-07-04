@@ -1,2 +1,2 @@
-1,delo,slika,10000,10,78
-2,delo2,slika2,999,11,99
+1,delo,https://charts-static.billboard.com/img/2017/04/lil-pump-9tf-344x344.jpg,0,0,0,Mladen,Petric,Muski,2004-03-10,10000,10,78
+2,delo2,https://charts-static.billboard.com/img/2017/04/lil-pump-9tf-344x344.jpg,0,0,0,Mladen,Petric,Muski,2004-03-10,999,11,99

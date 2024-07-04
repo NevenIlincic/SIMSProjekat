@@ -1,12 +1,13 @@
+from Controller.GroupController import GroupController
 from Model.Repository.MusicalPieceRepository import MusicalPieceRepository
 from Model.Models.MuzickoDelo import MuzickoDelo
 from Model.DTO.MusicalPieceDTO import MusicalPieceDTO
 from Model.Models.Grupa import Grupa
 
 class MusicalPieceController():
-    def __init__(self, group_controller) -> None:
-        self.piece_repository = MusicalPieceRepository(group_controller)
-        self.group_controller = group_controller
+    def __init__(self) -> None:
+        self.piece_repository = MusicalPieceRepository()
+        self.group_controller = GroupController()
     
     def add_piece(self, piece_dto: MusicalPieceDTO):
         id = self.piece_repository.generate_id()
@@ -40,3 +41,6 @@ class MusicalPieceController():
 
     def get_by_id(self, id: int):
         return self.piece_repository.get_by_id(id)
+    
+    def get_by_name(self, name):
+        return self.piece_repository.get_by_name(name)

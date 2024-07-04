@@ -26,7 +26,7 @@ class AlbumRepository():
     def assign_from_list(self, parameters):
         if parameters[0] == "":
             return None
-        muzicka_dela_ids = parameters[5].split("|")
+        muzicka_dela_ids = parameters[6].split("|")
         muzicka_dela = [self.__musical_piece_repository.get_by_id(int(md_id)) for md_id in muzicka_dela_ids]
         return Album(
             int(parameters[0]),   # id
@@ -39,6 +39,7 @@ class AlbumRepository():
         )
     
     def convert_to_list(self, entity: Album):
+        nesto = 2
         muzicka_dela_ids_str = "|".join([str(md.id) for md in entity.muzicka_dela])
         return [
             str(entity.id),       # id
