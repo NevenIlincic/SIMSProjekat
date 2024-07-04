@@ -1,10 +1,12 @@
 from View.ParticipantSupervisorView import ParticipantSupervisorWindow
+from View.PieceSupervisorView import PieceSupervisorWindow
 from PyQt5.QtWidgets import QMainWindow
 from Model.DTO.EditorsReviewDTO import EditorsReviewDTO
 from Model.DTO.UserInformationsDTO import UserInformationsDTO
 from View.AddReviewFormView import ReviewForm
 from View.GeneratedFiles.MusicSupervisorMenuGenerated import Ui_MainWindow
 from Model.Models.Ucesnik import Ucesnik
+from Model.Models.MuzickoDelo import MuzickoDelo
 from Model.Models.MuzickiElement import MuzickiElement
 from PyQt5.QtCore import pyqtSignal
 from View.AddParticipantView import AddParticipantWindow
@@ -16,6 +18,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QFrame, 
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import Qt, QEvent
 from PyQt5.QtWidgets import QMainWindow, QMessageBox, QScrollArea
+
 class CardWidget(QMainWindow,  Ui_CardWidget):
     update_signal = pyqtSignal()
     def __init__(self, element: MuzickiElement, user_informations_dto:UserInformationsDTO):
@@ -86,6 +89,9 @@ class CardWidget(QMainWindow,  Ui_CardWidget):
     def view_element(self):
         if isinstance(self.element, Ucesnik):
             self.view_window = ParticipantSupervisorWindow(self.element)
+            self.view_window.show()
+        elif isinstance(self.element, MuzickoDelo):
+            self.view_window = PieceSupervisorWindow(self.element)
             self.view_window.show()
     def add_review(self):  
         message, valid = self.complex_service.check_for_user_review(self.user_informations_dto, self.element)
