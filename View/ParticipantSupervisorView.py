@@ -13,6 +13,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QFrame, 
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import Qt, QEvent
 import requests
+import random
 
 class ParticipantSupervisorWindow(QMainWindow,  Ui_MainWindow):
     def __init__(self, participant: Ucesnik):
@@ -73,6 +74,13 @@ class ParticipantSupervisorWindow(QMainWindow,  Ui_MainWindow):
                 QMainWindow {
                     background-color: #ffebeb;
                 }
+                QPushButton#favourite_button {
+                background-color: #90ee90;  /* Light green */
+                border-radius: 5px;        /* Optional: rounded corners */
+                }
+                QPushButton:hover#favourite_button {
+                    background-color: #77dd77;  /* Slightly darker green when hovered */
+                }
             """)
         elif genres_string.find("Pop") != -1:
             self.setStyleSheet("""
@@ -84,6 +92,13 @@ class ParticipantSupervisorWindow(QMainWindow,  Ui_MainWindow):
                 }
                 QMainWindow {
                     background-color: #f9ebff;
+                }
+                QPushButton#favourite_button {
+                background-color: #90ee90;  /* Light green */
+                border-radius: 5px;        /* Optional: rounded corners */
+                }
+                QPushButton:hover#favourite_button {
+                    background-color: #77dd77;  /* Slightly darker green when hovered */
                 }
             """)
         elif genres_string.find("Dzez") != -1:
@@ -97,6 +112,13 @@ class ParticipantSupervisorWindow(QMainWindow,  Ui_MainWindow):
                 QMainWindow {
                     background-color: #ebeeff;
                 }
+                QPushButton#favourite_button {
+                background-color: #90ee90;  /* Light green */
+                border-radius: 5px;        /* Optional: rounded corners */
+                }
+                QPushButton:hover#favourite_button {
+                    background-color: #77dd77;  /* Slightly darker green when hovered */
+                }
             """)
         elif genres_string.find("Narodna") != -1:
             self.setStyleSheet("""
@@ -109,7 +131,23 @@ class ParticipantSupervisorWindow(QMainWindow,  Ui_MainWindow):
                 QMainWindow {
                     background-color: #ebffec;
                 }
+                QPushButton#favourite_button {
+                background-color: #90ee90;  /* Light green */
+                border-radius: 5px;        /* Optional: rounded corners */
+                }
+                QPushButton:hover#favourite_button {
+                    background-color: #77dd77;  /* Slightly darker green when hovered */
+                }
             """)
+        
+        reviews = self.complex.editors_review_controller.get_reviews_by_music_element(self.participant)
+        if len(reviews):
+            self.review_button.setVisible(False)
+            review = random.choice(reviews)
+            self.textBrowser.setText(review.opis)
+        else:
+            self.editor_title_label.setVisible(False)
+            self.textBrowser.setText("No review has been made yet by supervisors!")
 
     def set_image_in_frame(self, frame, image_url):
         # Download the image from the URL
