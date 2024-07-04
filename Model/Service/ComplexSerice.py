@@ -30,9 +30,11 @@ class ComplexService():
         self.participant_controller = ParticipantController()
         self.administrator_controller = AdministratorController()
         self.group_controller = GroupController()
-        self.musical_element_controller = MusicalElementController()
+        self.music_piece_controller = MusicalPieceController()
         self.list_controller = ListOfFavouritesController()
-        
+        self.editors_review_controller = EditorsReviewController()
+        self.album_controller = AlbumController()
+        self.musical_element_controller = MusicalElementController()
     def account_login(self, username, password, role: str):
         all_accounts = self.user_account_controller.get_all_accounts()
         found_account = None
@@ -89,6 +91,8 @@ class ComplexService():
         return error_message, valid
     
     def validate_data_for_group_adding(self, group_form_dto: GroupFormDTO):
+        if len(group_form_dto.participants) == 0:
+            return ("Group has to have at least one participant!", False)
         if self.group_controller.get_by_naziv(group_form_dto.name) != None:
             return ("Group with that name already exists!", False)
         if group_form_dto.name == "":

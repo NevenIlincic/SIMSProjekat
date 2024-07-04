@@ -1,1 +1,2 @@
-0,moja omiljena lista,1,1
+0,,1,
+0,listica,5,1
