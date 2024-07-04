@@ -9,6 +9,8 @@ from Controller.MusicSupervisorController import MusicSupervisorController
 from Model.DTO import UserDTO, UserAccountDTO
 from Controller.AdministratorController import AdministratorController
 from Controller.ParticipantController import ParticipantController
+from Controller.MusicalElementController import MusicalElementController
+from Controller.ListoOfFavouritesController import ListOfFavouritesController
 
 class ComplexService():
     def __init__(self) -> None:
@@ -18,6 +20,8 @@ class ComplexService():
         self.participant_controller = ParticipantController()
         self.administrator_controller = AdministratorController()
         self.group_controller = GroupController()
+        self.musical_element_controller = MusicalElementController()
+        self.list_controller = ListOfFavouritesController()
         
     def account_login(self, username, password, role: str):
         all_accounts = self.user_account_controller.get_all_accounts()
