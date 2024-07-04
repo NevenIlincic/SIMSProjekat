@@ -12,6 +12,7 @@ from Model.Service.ComplexSerice import ComplexService
 from View.GeneratedFiles.AddReviewFormGenerated import Ui_MainWindow
 
 class ReviewForm(QMainWindow, Ui_MainWindow):
+    update_signal = pyqtSignal()
     def __init__(self, review_dto: EditorsReviewDTO, user_informations_dto: UserInformationsDTO):
         super().__init__()
         self.setupUi(self)
@@ -42,4 +43,5 @@ class ReviewForm(QMainWindow, Ui_MainWindow):
             if reply == QMessageBox.Yes:
                 self.complex_service.add_review(self.review_dto, self.user_informations_dto)
                 QMessageBox.information(self, "Message", "Review successfully added!")
+                self.update_signal.emit()
                 self.close()
