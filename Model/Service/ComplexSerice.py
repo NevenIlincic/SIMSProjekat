@@ -16,6 +16,8 @@ from Controller.ParticipantController import ParticipantController
 from Model.Models.Album import Album
 from Model.Models.Grupa import Grupa
 from Model.Models.Izvodjenje import Izvodjenje
+from Controller.MusicalElementController import MusicalElementController
+from Controller.ListoOfFavouritesController import ListOfFavouritesController
 from Model.Models.MuzickiElement import MuzickiElement
 from Model.Models.MuzickoDelo import MuzickoDelo
 from Model.Models.Ucesnik import Ucesnik
@@ -28,10 +30,8 @@ class ComplexService():
         self.participant_controller = ParticipantController()
         self.administrator_controller = AdministratorController()
         self.group_controller = GroupController()
-        self.album_controller = AlbumController()
-        self.music_piece_controller = MusicalPieceController()
-        self.editors_review_controller = EditorsReviewController()
-
+        self.musical_element_controller = MusicalElementController()
+        self.list_controller = ListOfFavouritesController()
         
     def account_login(self, username, password, role: str):
         all_accounts = self.user_account_controller.get_all_accounts()

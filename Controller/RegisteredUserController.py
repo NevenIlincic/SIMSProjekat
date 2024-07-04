@@ -21,6 +21,12 @@ class RegisteredUserController():
     def get_all_users(self):
         return self.registered_user_repository.get_all_users()
     
+    def get_by_id(self, id :int):
+        return self.registered_user_repository.get_by_id(id)
+    
+    def get_by_username(self, username : str):
+        return self.registered_user_repository.get_by_name(username)
+    
     def find_user_by_account(self, id: int):
         all_users = self.get_all_users()
         found_user = None
