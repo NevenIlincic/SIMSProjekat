@@ -18,7 +18,15 @@ class MusicSupervisorWindow(QMainWindow,  Ui_MainWindow):
         self.setupUi(self)
         self.complex = ComplexService()
         participants = self.complex.participant_controller.get_all_participants()[:3]
+        pieces = self.complex.music_piece_controller.get_all_pieces()[:3]
+        albums = self.complex.album_controller.get_all_albums()[:3]
 
+        for piece in pieces:
+            card = CardWidget(piece, dto)
+            self.song_layout.addWidget(card)
+        for album in albums:
+            card = CardWidget(album, dto)
+            self.album_layout.addWidget(card)
         for participant in participants:
             card = CardWidget(participant, dto)
             self.artist_layout_2.addWidget(card)

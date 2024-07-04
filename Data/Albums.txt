@@ -1,8 +1,8 @@
-1;asdas;asd;0;0;0;4
-2;asdasds;asdasdas;0;0;0;2
-3;NAJJACI ALBUM BRE;asdas;0;0;0;4|2|1
-4;HEHEHEH;aasda;0;0;0;2|1
-5;OPAPAAP;asdsa;0;0;0;3
-6;NAJJACI ALBUM BRE a;asda;0;0;0;3
-7;THCF;SLIKICA;0;0;0;3|1
-8;nazivcic;ides;0;0;0;3
+1;Nevermind;https://cdn-icons-png.freepik.com/512/299/299103.png;0;0;0;4
+2;Dark side of the moon;https://cdn-icons-png.freepik.com/512/299/299103.png;0;0;0;2
+3;Revolver;https://cdn-icons-png.freepik.com/512/299/299103.png;0;0;0;4|2|1
+4;Pet sounds;https://cdn-icons-png.freepik.com/512/299/299103.png;0;0;0;2|1
+5;London calling;https://cdn-icons-png.freepik.com/512/299/299103.png;0;0;0;3
+6;NAJJACI ALBUM BRE a;https://cdn-icons-png.freepik.com/512/299/299103.png;0;0;0;3
+7;THCF;https://cdn-icons-png.freepik.com/512/299/299103.png;0;0;0;3|1
+8;nazivcic;https://cdn-icons-png.freepik.com/512/299/299103.png;0;0;0;3

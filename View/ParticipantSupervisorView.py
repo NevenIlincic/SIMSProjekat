@@ -32,7 +32,9 @@ class ParticipantSupervisorWindow(QMainWindow,  Ui_MainWindow):
         self.gender_label.setText(self.participant.pol.value)
         self.biography_label.setText(self.participant.biografija)
 
-        grade = round(self.participant.zbir_ocena / self.participant.broj_ocena, 1)
+        grade = 2.5
+        if self.participant.broj_ocena > 0:
+            grade = round(self.participant.zbir_ocena / self.participant.broj_ocena, 1)
         self.grade_label.setText(str(grade))
         self.ratings_label.setText("from "+str(self.participant.broj_ocena)+" ratings")
         if grade >= 4.9:

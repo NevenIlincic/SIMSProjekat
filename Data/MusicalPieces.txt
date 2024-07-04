@@ -1,4 +1,4 @@
-1;Malo cemo da se kupamo;null;nesto;122;9;40;1
-2;Nesto;null;nesto;122;9;40;1
-3;Malo cemo da se igramo;null;nesto;122;9;40;1
-4;Malo cemo da se peremo;null;nesto;122;9;40;1
+1;Ode to joy;https://cdn-icons-png.freepik.com/512/5338/5338726.png;nesto;122;9;40;1
+2;Smooth criminal;https://cdn-icons-png.freepik.com/512/5338/5338726.png;nesto;122;9;40;1
+3;We are the champions;https://cdn-icons-png.freepik.com/512/5338/5338726.png;nesto;122;9;40;1
+4;Malo cemo da se peremo;https://cdn-icons-png.freepik.com/512/5338/5338726.png;nesto;122;9;40;1
