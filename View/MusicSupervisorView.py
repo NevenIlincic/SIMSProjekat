@@ -8,6 +8,7 @@ from PyQt5.QtCore import pyqtSignal
 from View.AddParticipantView import AddParticipantWindow
 from Model.Service.ComplexSerice import ComplexService
 from View.CardWidget import CardWidget
+from View.AddGroupFormView import GroupForm
 
 class MusicSupervisorWindow(QMainWindow,  Ui_MainWindow):
     logout_signal = pyqtSignal()
@@ -22,6 +23,8 @@ class MusicSupervisorWindow(QMainWindow,  Ui_MainWindow):
             self.artist_layout_2.addWidget(card)
 
         self.add_participant_window = None
+        self.add_musical_piece_window = None
+        self.add_group_window = None
 
         self.supervisor_dto = dto
         self.show_informations()
@@ -29,6 +32,7 @@ class MusicSupervisorWindow(QMainWindow,  Ui_MainWindow):
         self.pushButton.clicked.connect(self.logout)
         self.participant_button.clicked.connect(self.add_participant)
         self.piece_button.clicked.connect(self.add_musical_piece)
+        self.group_button.clicked.connect(self.add_group)
 
     def show_informations(self):
         self.title_label.setText("Welcome back, "+self.supervisor_dto.ime+" "+self.supervisor_dto.prezime+"!")
@@ -44,3 +48,7 @@ class MusicSupervisorWindow(QMainWindow,  Ui_MainWindow):
     def add_musical_piece(self):
         self.add_musical_piece_window = AddMusicalPieceWindow()
         self.add_musical_piece_window.show()
+
+    def add_group(self):
+        self.add_group_window = GroupForm()
+        self.add_group_window.show()

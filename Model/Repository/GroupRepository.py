@@ -40,6 +40,7 @@ class GroupRepository():
         )
     
     def convert_to_list(self, entity: Grupa):
+        nesto = 2
         ucesnici_ids_str = "|".join([str(u.id) for u in entity.ucesnici])
         return [
             str(entity.id), 

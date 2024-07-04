@@ -99,3 +99,9 @@ class ParticipantRepository():
             if participant.id == id:
                 return participant
         return False
+
+    def get_by_pseudonym(self, pseudonym):
+        for participant in self.participants:
+            if participant.naziv == pseudonym:
+                return participant
+        return None

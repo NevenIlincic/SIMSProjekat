@@ -43,3 +43,24 @@ class ParticipantController():
 
     def get_by_id(self, id: int):
         return self.participant_repository.get_by_id(id)
+    
+    def get_by_pseodonym(self, pseudonym):
+        return self.participant_repository.get_by_pseudonym(pseudonym)
+    
+    def get_participants_first_last_name_pseudonym(self, first_name, last_name, pseudonym):
+        participants = self.get_all_participants()
+        found_participants_first_name = []
+        found_participants_last_name = []
+        found_participant = None
+        found_participant_pseudonym = self.get_by_pseodonym(pseudonym)
+        
+        for participant in participants:
+            if participant.ime == first_name:
+                found_participants_first_name.append(participant)
+            if participant.prezime == last_name:
+                found_participants_last_name.append(participant)
+            if participant.ime == first_name and participant.prezime == last_name:
+                found_participant = participant
+        
+        
+        return (found_participant, found_participant_pseudonym, found_participants_first_name, found_participants_last_name)
