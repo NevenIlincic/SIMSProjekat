@@ -17,6 +17,7 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import Qt, QEvent
 from PyQt5.QtWidgets import QMainWindow, QMessageBox, QScrollArea
 class CardWidget(QMainWindow,  Ui_CardWidget):
+    update_signal = pyqtSignal()
     def __init__(self, element: MuzickiElement, user_informations_dto:UserInformationsDTO):
         super().__init__()
         self.setupUi(self)
@@ -79,12 +80,16 @@ class CardWidget(QMainWindow,  Ui_CardWidget):
             self.resize_image()
         return super().eventFilter(source, event)
     
-    def add_review(self):
-        
+    def add_review(self):  
         message, valid = self.complex_service.check_for_user_review(self.user_informations_dto, self.element)
         if valid == False:
             QMessageBox.information(self, "Message", message)
         else:
             review_dto = EditorsReviewDTO("", 0, self.element)
             self.add_review_window = ReviewForm(review_dto, self.user_informations_dto)
+            self.add_review_window.update_signal.connect(self.update_main)
             self.add_review_window.show()
+
+    def update_main(self):
+        self.complex_service = ComplexService()
+        self.update_signal.emit()

@@ -6,3 +6,4 @@
 6;UUEE;asd;0;0;0;5|4|1
 7;MOJA GRUPICA;asd;0;0;0;5|4|1
 8;RHCP;asdfsdaf;0;0;0;4
+9;OPAPA;asda;0;0;0;5|4

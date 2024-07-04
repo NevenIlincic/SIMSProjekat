@@ -13,9 +13,14 @@ from Controller.MusicSupervisorController import MusicSupervisorController
 from Model.DTO import UserDTO, UserAccountDTO
 from Controller.AdministratorController import AdministratorController
 from Controller.ParticipantController import ParticipantController
+from Model.Models.Album import Album
+from Model.Models.Grupa import Grupa
+from Model.Models.Izvodjenje import Izvodjenje
 from Controller.MusicalElementController import MusicalElementController
 from Controller.ListoOfFavouritesController import ListOfFavouritesController
 from Model.Models.MuzickiElement import MuzickiElement
+from Model.Models.MuzickoDelo import MuzickoDelo
+from Model.Models.Ucesnik import Ucesnik
 
 class ComplexService():
     def __init__(self) -> None:
@@ -105,18 +110,15 @@ class ComplexService():
         return("", True)
     
     def check_for_user_review(self, user_informations_dto: UserInformationsDTO, element: MuzickiElement):
-        accounts = self.user_account_controller.get_all_accounts()
-        user_account = None
-        for acc in accounts:
-            if acc.korisnicko_ime == user_informations_dto.korisnicko_ime:
-                if acc.lozinka == user_informations_dto.lozinka:
-                    user_account = acc
-                    break
+        user_account = self.find_supervisor_account(user_informations_dto)
         supervisor = self.supervisor_controller.find_supervisor_by_account(user_account.id)
-        if element in supervisor.recenzije:
-            return("", True)
-        else:
-            return("You already added review!", False)
+        reviews_for_element = self.editors_review_controller.get_reviews_by_music_element(element)
+
+        for supervisor_review in supervisor.recenzije:
+            for review in reviews_for_element:
+                if review.id == supervisor_review.id:
+                    return ("You already added review!", False)
+        return ("", True)
 
 
     def register_new_user(self, user_dto, user_account_dto):  
@@ -139,14 +141,17 @@ class ComplexService():
         self.album_controller.add_album(album_dto)
 
     def add_review(self, editors_review_dto, user_informations_dto):
-        accounts = self.user_account_controller.get_all_accounts()
-        user_account = None
-        for acc in accounts:
-            if acc.korisnicko_ime == user_informations_dto.korisnicko_ime:
-                if acc.lozinka == user_informations_dto.lozinka:
-                    user_account = acc
-                    break
+        user_account = self.find_supervisor_account(user_informations_dto)
         supervisor = self.supervisor_controller.find_supervisor_by_account(user_account.id)
         review = self.editors_review_controller.add_review(editors_review_dto)
         supervisor.recenzije.append(review)
         self.supervisor_controller.update_supervisor(supervisor)
+
+    def find_supervisor_account(self, user_informations_dto):
+        accounts = self.user_account_controller.get_all_accounts()
+        for acc in accounts:
+            if acc.korisnicko_ime == user_informations_dto.korisnicko_ime:
+                if acc.lozinka == user_informations_dto.lozinka:
+                    return acc
+        return None
+                
