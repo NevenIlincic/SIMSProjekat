@@ -93,6 +93,8 @@ class ComplexService():
             return ("Group with that name already exists!", False)
         if group_form_dto.name == "":
             return ("Group has to have name!", False)
+        if len(group_form_dto.participants) == 0:
+            return ("Group has to have at least one participant!", False)
         return ("",True)
 
     def validate_data_for_album_adding(self, album_form_dto: AlbumFormDTO):

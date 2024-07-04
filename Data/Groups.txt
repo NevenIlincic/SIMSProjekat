@@ -7,3 +7,7 @@
 7;MOJA GRUPICA;asd;0;0;0;5|4|1
 8;RHCP;asdfsdaf;0;0;0;4
 9;OPAPA;asda;0;0;0;5|4
+10;NAJJJASJ;asd;0;0;0;5|1
+11;weqwe;asdas;0;0;0;
+12;KAKAKO;asdas;0;0;0;5
+13;asdasdaada;asds;0;0;0;5
