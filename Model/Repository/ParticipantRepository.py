@@ -17,7 +17,7 @@ class ParticipantRepository():
                 if row == None or row == "":
                     return
                 row = row.strip("\n")
-                parameters = row.split(",")
+                parameters = row.split("\\")
                 participant = self.assign_from_list(parameters)
                 if participant == None:
                     return
@@ -65,7 +65,7 @@ class ParticipantRepository():
         with open(self.path, "w") as f:
             for participant in self.participants:
                 parameters = self.convert_to_list(participant)
-                row = ",".join(parameters) + "\n"
+                row = "\\".join(parameters) + "\n"
                 f.write(row)
 
     def generate_id(self):

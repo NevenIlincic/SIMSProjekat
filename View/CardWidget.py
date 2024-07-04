@@ -1,7 +1,7 @@
-from PyQt5 import uic
+from View.ParticipantSupervisorView import ParticipantSupervisorWindow
 from PyQt5.QtWidgets import QMainWindow
 from View.GeneratedFiles.MusicSupervisorMenuGenerated import Ui_MainWindow
-from PyQt5.QtCore import pyqtSignal
+from Model.Models.Ucesnik import Ucesnik
 from Model.Models.MuzickiElement import MuzickiElement
 from PyQt5.QtCore import pyqtSignal
 from View.AddParticipantView import AddParticipantWindow
@@ -17,7 +17,8 @@ class CardWidget(QMainWindow,  Ui_CardWidget):
     def __init__(self, element: MuzickiElement):
         super().__init__()
         self.setupUi(self)
-
+        self.element = element
+        self.view_window = None
         self.label.setText(element.naziv)
         
         self.setStyleSheet("""
@@ -42,6 +43,7 @@ class CardWidget(QMainWindow,  Ui_CardWidget):
         self.set_image_in_frame(self.frame, element.slika)
 
         #Function call
+        self.pushButton.clicked.connect(self.view_element)
 
     def set_image_in_frame(self, frame, image_url):
         # Download the image from the URL
@@ -73,3 +75,8 @@ class CardWidget(QMainWindow,  Ui_CardWidget):
         if event.type() == QEvent.Resize and source is self.frame:
             self.resize_image()
         return super().eventFilter(source, event)
+    
+    def view_element(self):
+        if isinstance(self.element, Ucesnik):
+            self.view_window = ParticipantSupervisorWindow(self.element)
+            self.view_window.show()
