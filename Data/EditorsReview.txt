@@ -1,2 +1,5 @@
-1,recenzija1,10,False,2,Muzicko delo
-2,Strasno dobar izvodjac,10,False,2,Izvodjac
+1,HE HE,10,False,2,Izvodjac
+2,UGLY,7,False,1,Izvodjac
+3,MOZZART,10,False,3,Izvodjac
+4,BILLY JEAN IS NOT MY LOVER SHES JUST A GIRL WHO CLAIMS THAT I AM THE ONE BUT THE KIIIID IS NOT MY SON,10,False,2,Izvodjac
+5,MOZOOS,1,False,3,Izvodjac

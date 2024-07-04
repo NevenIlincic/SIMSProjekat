@@ -79,8 +79,7 @@ class CardWidget(QMainWindow,  Ui_CardWidget):
             self.resize_image()
         return super().eventFilter(source, event)
     
-    def add_review(self):
-        
+    def add_review(self):  
         message, valid = self.complex_service.check_for_user_review(self.user_informations_dto, self.element)
         if valid == False:
             QMessageBox.information(self, "Message", message)

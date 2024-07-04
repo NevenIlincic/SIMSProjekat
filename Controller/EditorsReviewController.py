@@ -54,3 +54,6 @@ class EditorsReviewController():
     
     def get_by_id(self, id: int):
         return self.editors_review_repository.get_by_id(id)
+    
+    def get_reviews_by_music_element(self, element: MuzickiElement):
+        return self.editors_review_repository.get_reviews_by_music_element(element)

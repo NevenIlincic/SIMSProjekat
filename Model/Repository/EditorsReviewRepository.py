@@ -1,4 +1,8 @@
+from Model.Models.Album import Album
+from Model.Models.Grupa import Grupa
 from Model.Models.MuzickiElement import MuzickiElement
+from Model.Models.MuzickoDelo import MuzickoDelo
+from Model.Models.Ucesnik import Ucesnik
 from Model.Observer.Subject import Subject
 from Model.Models.RecenzijaUrednika import RecenzijaUrednika
 from Model.Repository.AlbumRepository import AlbumRepository
@@ -95,4 +99,21 @@ class EditorsReviewRepository():
         for element in self.elements:
             if element.id == id:
                 return element
-        return False   
+        return None   
+    
+    def get_reviews_by_element(self, element, element_type):
+        found_reviews = []
+        for review in self.elements:
+            if review.muzicki_element.id == element.id and review.vrsta_elementa == element_type:
+                found_reviews.append(review)
+        return found_reviews
+
+    def get_reviews_by_music_element(self, element: MuzickiElement):
+        if isinstance(element, Ucesnik):
+            return self.get_reviews_by_element(element, "Izvodjac")
+        elif isinstance(element, MuzickoDelo):
+            return self.get_reviews_by_element(element, "Muzicko delo")
+        elif isinstance(element, Grupa):
+            return self.get_reviews_by_element(element, "Grupa")
+        else:
+            return self.get_reviews_by_element(element, "Album")
