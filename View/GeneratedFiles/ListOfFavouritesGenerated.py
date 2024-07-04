@@ -61,6 +61,7 @@ class Ui_Dialog(object):
         self.artist_scrollArea.setGeometry(QtCore.QRect(20, 130, 781, 341))
         self.artist_scrollArea.setMinimumSize(QtCore.QSize(0, 0))
         self.artist_scrollArea.setWidgetResizable(True)
+        self.artist_scrollArea.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.artist_scrollArea.setObjectName("artist_scrollArea")
         self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
         self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 779, 339))
