@@ -1,1 +1,2 @@
 1,recenzija1,10,False,2,Muzicko delo
+2,Strasno dobar izvodjac,10,False,2,Izvodjac

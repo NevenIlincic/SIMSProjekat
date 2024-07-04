@@ -54,7 +54,7 @@ class EditorsReviewRepository():
     
 
     def convert_to_list(self, entity: RecenzijaUrednika):
-        return [str(entity.id),entity.opis,str(entity.ocena), str(entity.menja_se), str(entity.muzickiElement.id), entity.vrsta_elementa]
+        return [str(entity.id),entity.opis,str(entity.ocena), str(entity.menja_se), str(entity.muzicki_element.id), entity.vrsta_elementa]
      
 
     def save(self):
