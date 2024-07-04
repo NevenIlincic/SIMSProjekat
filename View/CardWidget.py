@@ -1,10 +1,10 @@
-from PyQt5 import uic
+from View.ParticipantSupervisorView import ParticipantSupervisorWindow
 from PyQt5.QtWidgets import QMainWindow
 from Model.DTO.EditorsReviewDTO import EditorsReviewDTO
 from Model.DTO.UserInformationsDTO import UserInformationsDTO
 from View.AddReviewFormView import ReviewForm
 from View.GeneratedFiles.MusicSupervisorMenuGenerated import Ui_MainWindow
-from PyQt5.QtCore import pyqtSignal
+from Model.Models.Ucesnik import Ucesnik
 from Model.Models.MuzickiElement import MuzickiElement
 from PyQt5.QtCore import pyqtSignal
 from View.AddParticipantView import AddParticipantWindow
@@ -21,6 +21,8 @@ class CardWidget(QMainWindow,  Ui_CardWidget):
     def __init__(self, element: MuzickiElement, user_informations_dto:UserInformationsDTO):
         super().__init__()
         self.setupUi(self)
+        self.element = element
+        self.view_window = None
         self.user_informations_dto = user_informations_dto
         self.label.setText(element.naziv)
         self.element = element
@@ -48,6 +50,7 @@ class CardWidget(QMainWindow,  Ui_CardWidget):
         self.add_review_window = None
         self.pushButton_2.clicked.connect(self.add_review)
         #Function call
+        self.pushButton.clicked.connect(self.view_element)
 
     def set_image_in_frame(self, frame, image_url):
         # Download the image from the URL
@@ -80,6 +83,10 @@ class CardWidget(QMainWindow,  Ui_CardWidget):
             self.resize_image()
         return super().eventFilter(source, event)
     
+    def view_element(self):
+        if isinstance(self.element, Ucesnik):
+            self.view_window = ParticipantSupervisorWindow(self.element)
+            self.view_window.show()
     def add_review(self):  
         message, valid = self.complex_service.check_for_user_review(self.user_informations_dto, self.element)
         if valid == False:
