@@ -1,8 +1,10 @@
+from Controller.AlbumController import AlbumController
 from Controller.EditorsReviewController import EditorsReviewController
 from Controller.GroupController import GroupController
 from Controller.MusicalPieceController import MusicalPieceController
 from Controller.UserAccountController import UserAccountController
 from Controller.RegisteredUserController import RegisteredUserController
+from Model.DTO.AlbumFormDTO import AlbumFormDTO
 from Model.DTO.GroupFormDTO import GroupFormDTO
 from Model.DTO.UserInformationsDTO import UserInformationsDTO
 from Controller.MusicSupervisorController import MusicSupervisorController
@@ -18,6 +20,8 @@ class ComplexService():
         self.participant_controller = ParticipantController()
         self.administrator_controller = AdministratorController()
         self.group_controller = GroupController()
+        self.album_controller = AlbumController()
+        self.music_piece_controller = MusicalPieceController()
         
     def account_login(self, username, password, role: str):
         all_accounts = self.user_account_controller.get_all_accounts()
@@ -81,6 +85,15 @@ class ComplexService():
             return ("Group has to have name!", False)
         return ("",True)
 
+    def validate_data_for_album_adding(self, album_form_dto: AlbumFormDTO):
+        if self.album_controller.get_by_naziv(album_form_dto.album_name):
+            return ("Album with that name already exists!", False)
+        if album_form_dto.album_name == "":
+            return ("Album has to have name!", False)
+        if len(album_form_dto.musical_pieces) == 0:
+            return ("Album has to have at least one piece!", False)
+        return ("", True)
+
     def register_new_user(self, user_dto, user_account_dto):  
         account = self.user_account_controller.add_account(user_account_dto)
         user_dto.korisnicki_nalog = account
@@ -96,3 +109,6 @@ class ComplexService():
     
     def add_new_group(self, group_dto):
         self.group_controller.add_group(group_dto)
+    
+    def add_new_album(self, album_dto):
+        self.album_controller.add_album(album_dto)

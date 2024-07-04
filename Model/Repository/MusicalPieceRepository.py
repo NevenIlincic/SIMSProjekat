@@ -88,3 +88,9 @@ class MusicalPieceRepository():
             if piece.id == id:
                 return piece
         return False
+
+    def get_by_name(self, name):
+        for piece in self.pieces:
+            if piece.naziv == name:
+                return piece
+        return None
